@@ -1,3 +1,508 @@
+====== inet-4.x ======
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up includes.
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-08-09  Zoltan Bojthe
+
+	all: added some missing "override"
+
+2017-07-27  Levente Mészáros
+
+	802.11: Added Ieee80211MpduSubframeHeader and its serialization.
+
+2017-07-27  Levente Mészáros
+
+	802.11: Added MpduAggregation to OriginatorQosMacDataService.
+
+2017-07-27  Levente Mészáros
+
+	802.11: Added empty ampdu aggregation classes.
+
+2017-07-27  Levente Mészáros
+
+	802.11: Cleaned up code style a bit.
+
+2017-07-27  Levente Mészáros
+
+	802.11: Added MPDU aggregation interfaces.
+
+2017-07-14  Levente Mészáros
+
+	All: Renamed arguments in handleLowerPacket and handleUpperPacket to
+	packet.
+
+2017-07-14  Levente Mészáros
+
+	All: Replaced cPacket with Packet in LayeredProtocolBase and subclasses.
+
+2017-07-14  Levente Mészáros
+
+	802.11: Renamed variables, arguments to be more consistent.
+
+2017-07-14  Levente Mészáros
+
+	802.11: Fixed confusion between the last transmitted packet and the
+	received packet while processing received packet.
+
+2017-07-14  Levente Mészáros
+
+	802.11: Fixed bug that caused Ieee80211Retransmisson6.test to fail.
+
+2017-07-12  Levente Mészáros
+
+	802.11: Refactored display string text in Edcaf.
+
+2017-07-12  Levente Mészáros
+
+	802.11: Added display string text tag to Dcaf.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-12  Levente Mészáros
+
+	802.11: Removed obsolete duplicated base modules, INET 4.0 requires
+	OMNeT++ 5.0.
+
+2017-07-12  Levente Mészáros
+
+	802.11: Fixed missing signal declarations.
+
+2017-07-12  Levente Mészáros
+
+	Link: Added linkBreak statistic.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NF_LINK_BREAK signal to linkBreak(Signal).
+
+2017-07-12  Levente Mészáros
+
+	Link: Added missing packet drop related statistics.
+
+2017-07-12  Levente Mészáros
+
+	Link: Added missing packetDrop signal emitting code.
+
+2017-07-12  Levente Mészáros
+
+	Link: Added limit to packetDrop signals with queueOverflow reason.
+
+2017-07-12  Levente Mészáros
+
+	Link: Added limit to packetDrop signals with retryLimitReached reason.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NF_PACKET_DROP to packetDrop(Signal).
+
+2017-07-12  Levente Mészáros
+
+	All: Added some missing packet drop signal emitting.
+
+2017-07-10  Levente Mészáros
+
+	All: Added reason codes where packet drop signals are emitted.
+
+2017-07-12  Levente Mészáros
+
+	All: Replaced packetFromLowerDropped and packetFromUpperDropped with
+	NF_PACKET_DROP signal.
+
+2017-07-12  Levente Mészáros
+
+	802.11: Fixed memory leaks.
+
+2017-07-11  Levente Mészáros
+
+	All: Renamed variables, arguments, and functions to adapt to Chunk API.
+
+2017-07-10  Levente Mészáros
+
+	802.11: Added at least a log statement to avoid silently ignoring an RTS.
+
+2017-07-06  Levente Mészáros
+
+	802.11: Fixed aggregation after merging changes from master.
+
+2017-07-05  Levente Mészáros
+
+	802.11: Removed obsolete kludges thanks to recent NetworkProtocolInd
+	changes.
+
+2017-07-04  Levente Mészáros
+
+	All: Added more const qualifiers to Ptr<> where possible.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-06-20  Zoltan Bojthe
+
+	ieee80211: InProgressFrames: bugfix: throw was when mgmt frame received -
+	fingerprint updated
+
+2017-06-09  Rudolf Hornig
+
+	mac: removed unused variable
+
+2017-06-07  Levente Mészáros
+
+	802.11: Fixed dynamic_cast after merging with master.
+
+2017-06-07  Levente Mészáros
+
+	802.11: Extended kludge to revert pop offsets, because the frame may
+	still be in progress.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Fixed bug, popTrailer must be called with length to deserialize
+	backwards.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Renamed frame variables to header where applicable.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Fixed whitespaces in getHistory.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Added prefix to frame sequence display, and also added it as a
+	tooltip.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Fixed getHistory.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Cosmetics.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Fixed order of callback and state clearing, removed unnecessary
+	state variables.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Fixed processing BlockAckReq.
+
+2017-05-10  Benjamin Martin Seregi
+
+	Rx,Tx: chunks don't have a name.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Changed to Packet * and std::vector<Packet *> for block acks.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Moved transmitter address setting to Tx.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Changed to avoid copying shared_ptr.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Fixed processUpperFrame typo.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Added missing Ieee80211MacTrailers.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Fixed TODOs in getHistory.
+
+2017-05-10  Benjamin Martin Seregi
+
+	TxopFs: fixed incorrect cast.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Fixed corner case.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Added the currently running frame sequence to display string of
+	Dcf and Hcf.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Replaced unused qos field with parts of QoS control field.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed MAC header arguments to *Header.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed some MAC headers and frames.
+
+	Ieee80211Frame -> Ieee80211MacHeader Ieee80211OneAddressFrame ->
+	Ieee80211OneAddressHeader Ieee80211TwoAddressFrame ->
+	Ieee80211TwoAddressHeader Ieee80211ACKFrame -> Ieee80211AckFrame
+	Ieee80211RTSFrame -> Ieee80211RtsFrame Ieee80211CTSFrame ->
+	Ieee80211CtsFrame
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MsduSubframeHeader.
+
+2017-05-09  Levente Mészáros
+
+	802.2: Renamed to Ieee8022*.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Cleaned up some includes.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed multiple header chunks.
+
+	Ieee80211DataFrame -> Ieee80211DataHeader Ieee80211DataOrMgmtFrame ->
+	Ieee80211DataOrMgmtHeader Ieee80211ManagementHeader ->
+	Ieee80211MgmtHeader Ieee80211ManagementFrame -> Ieee80211MgmtFrame
+
+2017-05-09  Levente Mészáros
+
+	802.11: Removed kludge and updated fingerprints.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Properly implemented (revived) encapsulate/decapsulate in MAC.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Removed MAC header from interface between MAC and MGMT.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Moved MAC address to MIB.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Added Ds submodule to MAC.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Added fcsMode parameter.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Moved qos flag from MAC to MIB.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Added a separate sendUpFrame.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed to sendDownFrame.
+
+2017-05-08  Levente Mészáros
+
+	802.11: Added Ieee802Llc and Ieee80211Mib modules to Ieee80211Nic module.
+
+2017-05-08  Levente Mészáros
+
+	802.11: Added a separate Ds (distribution service) module similarly how
+	the standard describes this service.
+
+2017-05-03  Levente Mészáros
+
+	802.11: Moved encapsulation into MAC from adhoc MGMT.
+
+2017-05-03  Levente Mészáros
+
+	802.11: Added mgmt gates to mac module.
+
+2017-05-03  Levente Mészáros
+
+	Link: Renamed to Ieee802LlcHeader.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Moved the insertion of the MAC trailer from MGMT into MAC.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed to Ieee80211ManagementHeader.
+
+2017-04-28  Levente Mészáros
+
+	802.11: Removed kludges related to AMSDU aggregation and updated
+	fingerprints.
+
+2017-04-28  Levente Mészáros
+
+	802.11: Added kludge for fingerprint tests.
+
+2017-04-28  Levente Mészáros
+
+	802.11: Removed debug print.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Temporarily disabled AMSDU length correction for fingerprint
+	tests.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Added a couple of kludges to pass fingerprint tests.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Fixed when reassemly returns nullptr.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Moved dup in Tx.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Moved Ieee80211MacTrailer handling so that fingerprints are kept.
+
+2017-04-26  Levente Mészáros
+
+	Serializer: Revived Ieee80211MacHeader::deserialize().
+
+2017-04-26  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MacTrailer and Ieee80211MacTrailerSerializer.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Renamed to Ieee80211FcsTrailer.
+
+2017-04-26  Benjamin Martin Seregi
+
+	RecipientQoSMacDataService: fixed memory leak.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Fixed defragmentation FCS trailer handling.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Fixed sequence number for fragments.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Removed Ieee80211DataFrameWithSNAP and add separate
+	Ieee802SnapHeader.
+
+2017-04-25  Levente Mészáros
+
+	802.11: Fixed MsduAggregation and MsduDeaggregation, especially related
+	to msdu subframe length and SNAP headers.
+
+2017-04-25  Levente Mészáros
+
+	802.11: Added PacketProtocolTag to 802.11 packets.
+
+2017-04-25  Levente Mészáros
+
+	802.11: Added separate Ieee80211Fcs chunk and fixed body lengths.
+
+2017-04-20  Levente Mészáros
+
+	802.11: Removed obsolete kludgie solution from reassembly and switched to
+	new chunk API.
+
+2017-04-20  Levente Mészáros
+
+	802.11: Refactored to use the new Packet API.
+
+2017-04-12  Levente Mészáros
+
+	802.11: Turned packets into chunks.
+
+2017-04-12  Levente Mészáros
+
+	802.11: Removed cPacketChunk kludges.
+
+2017-04-12  Levente Mészáros
+
+	802.11: Replace cPacket with Packet.
+
+2017-04-03  Levente Mészáros
+
+	802.11: Changed NF_LINK_BREAK object type to be Packet as assumed by
+	receivers.
+
+	This will be replaced when the 802.11 model gets ported to the new API.
+
+2017-02-03  Levente Mészáros
+
+	All: Renamed to INetworkHeader.
+
+2017-03-07  Levente Mészáros
+
+	802.11 old: Added temporary kludges to work with the new Packet class.d
+
+2017-03-07  Levente Mészáros
+
+	802.11: Fixed Packet wrapping kludge to transfer tags and control info.
+
+2017-03-07  Levente Mészáros
+
+	Link: Changed to use bit/byte where appropriate.
+
+	Some mac protocols were wrong due to the previous Packet implementation
+	not supporting bit precise lengths.
+
+2017-03-07  Levente Mészáros
+
+	802.11: Changed to send/receive Packets instead of cPacket down.
+
+	This is a temporary solution but the upcoming 802.11 refactor renders
+	this useless anyway.
+
+2016-10-26  Zoltan Bojthe
+
+	refactoring: removed compatibility macros required for OMNeT++ 4.x builds
+	+ warning fixes
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: replace deprecated cQueue functions: operator(), length(),
+	empty()
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

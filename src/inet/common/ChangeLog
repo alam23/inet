@@ -1,3 +1,2381 @@
+====== inet-4.x ======
+
+2017-10-11  Zoltan Bojthe
+
+	eth: moved ethertype constants to new EtherType.msg file, dropped some
+	unused ethernet  related structs
+
+2017-10-10  Zoltan Bojthe
+
+	common: assert --> ASSERT
+
+2017-10-10  Gyorgy Szaszko
+
+	common/osg: Include omnetpp/osgutil in inet/OSGUtils.
+
+2017-10-09  Levente Mészáros
+
+	All: Fixed all problems with using the newly introduced intrusive shared
+	pointer.
+
+2017-10-06  Levente Mészáros
+
+	Common: Added a new shared ptr implementation called IntrusivePtr and
+	support for using it instead of std::shared_ptr.
+
+	The new implementation uses only 1 counter (no weak counter) that is
+	directly added to the shared object using inheritance. This is the reason
+	why it's called intrusive. This shared pointer is not thread safe, so it
+	doesn't use atomic operations to increment/decrement counters, but it's
+	not a requirement for simulation. According to speed measurements (see
+	tests folder) the release builds run 5-10% faster.
+
+2017-10-09  Levente Mészáros
+
+	Common: Disabled chunk checks.
+
+2017-09-27  Zoltan Bojthe
+
+	icmp, icmpv6: added crc mode
+
+	udp: checking crc on incoming icmp/icmpv6 packets PingApp: set crc
+
+2017-09-26  Zoltan Bojthe
+
+	common: Fix TCP/IP Checksum calculation with odd length
+
+2017-09-22  Zoltan Bojthe
+
+	Packet: store and update totalLength
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-09-13  Levente Mészáros
+
+	Serializer: Correctly implemented EthernetPhyHeaderSerializer.
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up includes.
+
+2017-09-13  Levente Mészáros
+
+	Link: Cleaned up LLC.
+
+2017-09-13  Levente Mészáros
+
+	Serializer: Fixed deserializing non-representable control frames.
+
+2017-09-13  Levente Mészáros
+
+	Link: Renamed protocol to ieee8022 and protocol group to
+	ieee8022protocol.
+
+2017-09-12  Zoltan Bojthe
+
+	eth: llc
+
+2017-09-04  Zoltan Bojthe
+
+	common: protocol: added stp, snapOui
+
+2017-09-12  Zoltan Bojthe
+
+	linklayer: using new ethernet header structures
+
+2017-09-12  Zoltan Bojthe
+
+	eth: llc: support for 4 bytes llc header
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-09-11  Levente Mészáros
+
+	Common: Enhanced comment.
+
+2017-09-11  Levente Mészáros
+
+	Common: Added SliceChunk::forEachChild().
+
+2017-09-11  Levente Mészáros
+
+	Common: Removed comment already present in header.
+
+2017-08-30  Zoltan Bojthe
+
+	common: packet, chunk: fixing implementation checks
+
+2017-08-30  Zoltan Bojthe
+
+	common: Packet, Chunk: isIteratorConsistent() fixed
+
+2017-08-30  Zoltan Bojthe
+
+	common: packet: KLUDGE: set CHUNK_CHECK_IMPLEMENTATION_ENABLED to 1
+
+2017-08-10  Zoltan Bojthe
+
+	icmpv6: fixed deserializer
+
+2017-08-10  Rudolf Hornig
+
+	build: updated version number (3.99.0) and check whether OMNeT++ is
+	properly patched.
+
+2017-08-07  Zoltan Bojthe
+
+	InetPacketPrinter2: renamed variables
+
+2017-08-07  Zoltan Bojthe
+
+	packet/recorder: PacketDump converted for chunks
+
+2017-08-07  Zoltan Bojthe
+
+	remove deprecated TCPDump module
+
+2017-08-02  Zoltan Bojthe
+
+	ipv6: ICMPv6* headers, messages renamed to Icmpv6
+
+2017-08-02  Zoltan Bojthe
+
+	ipv6: camelcase: renamed IPv6*Header to Ipv6*Header
+
+2017-08-02  Zoltan Bojthe
+
+	ipv4: camelcase: IPv4Header --> Ipv4Header, ICMPHeader --> IcmpHeader
+
+2017-07-31  Zoltan Bojthe
+
+	serializer: ICMPv6HeaderSerializer fixed: was 2 bytes extra read
+
+2017-07-31  Zoltan Bojthe
+
+	common: ReorderBuffer: functions moved to .cc
+
+2017-07-28  Levente Mészáros
+
+	Common: Changed getReassembledData to throw an error if incomplete.
+
+2017-07-28  Levente Mészáros
+
+	Common: Renamed to ReassemblyBuffer::getReassembledData().
+
+2017-07-28  Levente Mészáros
+
+	Common: Renamed to ReorderBuffer::popAvailableData().
+
+2017-07-28  Levente Mészáros
+
+	Common: Added length parameter to ReorderBuffer::popData().
+
+2017-07-28  Levente Mészáros
+
+	Common: Fixed ChunkQueue::str().
+
+2017-07-28  Levente Mészáros
+
+	Common: Fixed units typo.
+
+2017-07-27  Levente Mészáros
+
+	Serializer: Added TODO item to Ieee80211MacHeaderSerializer.
+
+2017-07-27  Levente Mészáros
+
+	802.11: Added Ieee80211MpduSubframeHeader and its serialization.
+
+2017-07-27  Zoltan Bojthe
+
+	PacketDump: feature related compiler error fix
+
+2017-07-26  Levente Mészáros
+
+	Common: Replaced operator[] with at().
+
+2017-07-26  Levente Mészáros
+
+	Serializer: Dropped unused 802.11 PLCP header file.
+
+2017-07-26  Levente Mészáros
+
+	Serializer: Rewritten 802.11 OFDM phy header serialization to avoid using
+	a structure.
+
+	According to the C++ standard, the memory layout of bit fields in
+	structures is undefined.
+
+2017-07-25  Levente Mészáros
+
+	Common: Added new readers/writers to Memory*Streams.
+
+2017-07-25  Levente Mészáros
+
+	Common: Added documentation to Memory*Streams.
+
+2017-07-14  Levente Mészáros
+
+	All: Replaced cPacket with Packet in LayeredProtocolBase and subclasses.
+
+2017-07-12  Levente Mészáros
+
+	Common: Dropped some unused, obsolete signals.
+
+2017-07-12  Levente Mészáros
+
+	Common: Cleaned up Simsignals.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed to Simsignals.msg.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts.msg to SignalDetails.msg.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NF_LINK_BREAK signal to linkBreak(Signal).
+
+2017-07-12  Levente Mészáros
+
+	IPv4: Added packetDrop related statistics.
+
+2017-07-12  Levente Mészáros
+
+	Common: Added new packetDropSignal reasons.
+
+2017-07-12  Levente Mészáros
+
+	Common: Added packetDrop signals to REDDropper and ThresholdDropper.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NF_PACKET_DROP to packetDrop(Signal).
+
+2017-07-10  Levente Mészáros
+
+	Common: Updated queue module packet drop statistics.
+
+2017-07-10  Levente Mészáros
+
+	fixup for result filters.
+
+2017-07-10  Levente Mészáros
+
+	Common: Added PacketDropReasonFilter and subclasses for individual
+	reasons.
+
+2017-06-20  Levente Mészáros
+
+	Common: Added const qualifier to get/findContainingNicModule parameter.
+
+2017-06-19  Levente Mészáros
+
+	All: Renamed and reordered PacketDropReason enum members.
+
+2017-07-12  Levente Mészáros
+
+	All: Replaced remaining packet drop signals with the generic one.
+
+2017-07-12  Levente Mészáros
+
+	All: Added some missing packet drop signal emitting.
+
+2017-07-10  Levente Mészáros
+
+	All: Added reason codes where packet drop signals are emitted.
+
+2017-07-12  Levente Mészáros
+
+	All: Replaced packetFromLowerDropped and packetFromUpperDropped with
+	NF_PACKET_DROP signal.
+
+2017-07-12  Levente Mészáros
+
+	Common: Dropped obsolete DelegateSignalConfigurator, functionality is
+	present in omnetpp by default.
+
+2017-07-11  Levente Mészáros
+
+	All: Fixed memory leaks related to removing tags.
+
+2017-07-11  Levente Mészáros
+
+	Common: Fixed memory leak in ChunkSerializerRegistry.
+
+2017-07-11  Levente Mészáros
+
+	All: Renamed variables, arguments, and functions to adapt to Chunk API.
+
+2017-07-07  Levente Mészáros
+
+	Common: Changed displaying bits to use bytes when divisible by 8.
+
+2017-07-06  Levente Mészáros
+
+	Common: Fixed incorrectly displayed NodeStatus submodule icon.
+
+	Added icon annotation instead of replacing the NodeStatus submodule icon.
+	Added watch for the state of the NodeStatus.
+
+2017-07-05  Zoltan Bojthe
+
+	networklayer: "int get/setTransportProtocol()" replaced to "int
+	get/setProtocolId()", added "const Protocol* get/setProtocol()" ; uses
+	these
+
+2017-07-05  Zoltan Bojthe
+
+	common: packetdump: show tcp packets with payload length
+
+2017-07-05  Zoltan Bojthe
+
+	common: BitCountChunk: fixed argument name
+
+2017-07-05  Levente Mészáros
+
+	Common: Added operator== to Protocol.
+
+2017-07-05  Levente Mészáros
+
+	All: Refactored L3/L4 protocol tools.
+
+2017-07-05  Levente Mészáros
+
+	All: Removed obsolete NetworkHeaderBase.h.
+
+2017-07-04  Levente Mészáros
+
+	Common: Merged Transport/Network/Mac ProtocolTag into corresponding
+	ProtocolInd.
+
+2017-07-04  Levente Mészáros
+
+	All: Added more const qualifiers to Ptr<> where possible.
+
+2017-07-04  Levente Mészáros
+
+	Common: Extracted makeExclusivelyOwnedMutableChunk template function.
+
+2017-07-04  Levente Mészáros
+
+	Common: Changed simplify to allow incomplete, incorrect and improperly
+	represented chunks.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-07-05  Levente Mészáros
+
+	Common: Replaced Ptr<Chunk> to Ptr<const Chunk> wherever it's possible.
+
+2017-07-04  Levente Mészáros
+
+	Common: Added uint8_t data field to ByteCountChunk.
+
+2017-07-04  Levente Mészáros
+
+	Common: Added bool data field to BitCountChunk.
+
+2017-07-03  Levente Mészáros
+
+	Common: Changed class descriptor to return error message for bits/bytes.
+
+2017-06-21  Levente Mészáros
+
+	Common: Appending AsString to getBits and getBytes accessors to avoid
+	shadowing.
+
+2017-06-21  Levente Mészáros
+
+	Common: Fixed corner cases which would not occur normally.
+
+2017-06-21  Levente Mészáros
+
+	Common: Added bits and bytes as an array of formatted strings to chunk
+	descriptor.
+
+2017-06-21  Levente Mészáros
+
+	Common: Fixed sequence chunk serialization.
+
+2017-06-20  Zoltan Bojthe
+
+	common: Chunk: typo
+
+2017-06-16  Zoltan Bojthe
+
+	common: Packet: added removeAll() function for clearing entire Packet
+
+2017-06-16  Levente Mészáros
+
+	Common: Reverted to macros in error handling even if guarded.
+
+2017-06-14  Zoltan Bojthe
+
+	common: chunk: fixed unused variables, fixed CHUNK_CHECK_IMPLEMENTATION
+	and CHUNK_CHECK_USAGE macros
+
+	CHUNK_CHECK_USAGE was dangerous
+
+2017-06-13  Zoltan Bojthe
+
+	feature related fixes
+
+2017-06-12  TÖRÖK Attila
+
+	Make inet::cPanelFigure use GroupFigureRenderer. (hack, but avoids a
+	crash)
+
+	This way, the "panel" functionality will still work with Tkenv, and won't
+	crash in Qtenv. Sadly, it will act just like a "group" in Qtenv - not
+	cancelling transformations. Thankfully this is not needed for long... I
+	hope (just until OMNeT++ 5.2 comes out).
+
+2017-06-12  TÖRÖK Attila
+
+	Typedef BSD-style integer types on all platforms.
+
+2017-06-09  Rudolf Hornig
+
+	build: version -> 3.6
+
+2017-05-26  Rudolf Hornig
+
+	build: separate precompiled headers for debug and release mode
+
+2017-06-08  Levente Mészáros
+
+	Common: Refactored BarFigure.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Revived layered OFDM transmitter and receiver.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Dropped obsolete layered code.
+
+2017-05-08  Zoltan Bojthe
+
+	cPacketChunk: str(): show more info: class name, length
+
+2017-05-10  Levente Mészáros
+
+	802.11: Replaced unused qos field with parts of QoS control field.
+
+2017-05-10  Levente Mészáros
+
+	Radio: Renamed radioFrame variables to signal.
+
+2017-05-10  Levente Mészáros
+
+	Radio: Renamed IRadioFrame to ISignal, and RadioFrame to Signal.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed some MAC headers and frames.
+
+	Ieee80211Frame -> Ieee80211MacHeader Ieee80211OneAddressFrame ->
+	Ieee80211OneAddressHeader Ieee80211TwoAddressFrame ->
+	Ieee80211TwoAddressHeader Ieee80211ACKFrame -> Ieee80211AckFrame
+	Ieee80211RTSFrame -> Ieee80211RtsFrame Ieee80211CTSFrame ->
+	Ieee80211CtsFrame
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MsduSubframeHeader.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MgmtFrame.msg.
+
+2017-05-09  Levente Mészáros
+
+	802.2: Renamed to Ieee8022*.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Cleaned up some includes.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed multiple header chunks.
+
+	Ieee80211DataFrame -> Ieee80211DataHeader Ieee80211DataOrMgmtFrame ->
+	Ieee80211DataOrMgmtHeader Ieee80211ManagementHeader ->
+	Ieee80211MgmtHeader Ieee80211ManagementFrame -> Ieee80211MgmtFrame
+
+2017-05-09  Levente Mészáros
+
+	Serializer: Extracted Ieee80211MgmtFrameSerializer from
+	Ieee80211MacHeaderSerializer.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Added fcsMode parameter.
+
+2017-05-08  Levente Mészáros
+
+	Common: Added missing peek variants to Packet.
+
+2017-05-03  Levente Mészáros
+
+	Serializer: Renamed to Ieee802LlcHeaderSerializer.
+
+2017-05-03  Levente Mészáros
+
+	Link: Renamed to Ieee802LlcHeader.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed authentication *FrameBody to *Frame.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed to Ieee80211ManagementHeader.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Dropped obsolete authentication frame subtypes.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Moved management frame bodies into their own chunks.
+
+2017-04-28  Zoltan Bojthe
+
+	tcp: remove kludges
+
+2017-04-26  Zoltan Bojthe
+
+	xmipv6 - fingerprint changed
+
+2017-04-27  Levente Mészáros
+
+	Common: Fixed merging flags.
+
+2017-04-27  Levente Mészáros
+
+	Serialization: Added missing chunk types to Ieee80211MacHeaderSerializer.
+
+2017-04-27  Levente Mészáros
+
+	Serializer: Fixed Ieee80211MacHeader deserialization wrt. sequence
+	control and QoS control.
+
+2017-04-27  Levente Mészáros
+
+	Serializer: Temporarily revived Ieee80211PhyHeaderSerializer with a
+	kludge.
+
+2017-04-26  Levente Mészáros
+
+	Serializer: Revived Ieee80211MacHeader::deserialize().
+
+2017-04-26  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MacTrailer and Ieee80211MacTrailerSerializer.
+
+2017-04-26  Levente Mészáros
+
+	Serializer: Implemented Ieee80211FcsTrailerSerializer.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Renamed to Ieee80211FcsTrailer.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Added TID to QoS control field in serializer.
+
+2017-04-26  Levente Mészáros
+
+	802: Added separate IEEE 802 LLC and SNAP headers and serializers.
+
+2017-04-25  Levente Mészáros
+
+	Common: Renamed functions to include Be (Big Endian) in their names.
+
+2017-04-25  Levente Mészáros
+
+	Common: Added separate functions for storing little endian values needed
+	for some 802.11 fields.
+
+2017-04-25  Levente Mészáros
+
+	Serializer: Partially revived Ieee80211MacHeaderSerializer.
+
+2017-04-25  Levente Mészáros
+
+	Serializer: Fixed ICMP serializer.
+
+2017-04-25  Levente Mészáros
+
+	Pcap: Dropped obsolete code, not needed due to new Packet API.
+
+2017-04-25  Levente Mészáros
+
+	Pcap: Added pcapNetwork constant for 802.11.
+
+2017-04-25  Levente Mészáros
+
+	Common: Fixed error message.
+
+2017-04-24  Levente Mészáros
+
+	Common: Added properties for packet data filtering in the GUI.
+
+2017-04-24  Levente Mészáros
+
+	Common: Changed serialization methods to protected visibility.
+
+2017-04-20  Levente Mészáros
+
+	Common: Added forEachChild.
+
+2017-04-12  Zoltan Bojthe
+
+	L3: merged INetworkHeader and NetworkHeaderBase
+
+2017-04-12  Zoltan Bojthe
+
+	ipv4 serializer/deserializer
+
+2017-04-12  Levente Mészáros
+
+	Common: Dropped obsolete OldReassemblyBuffer.
+
+2017-04-12  Levente Mészáros
+
+	Common: Added some documentation.
+
+2017-04-12  Levente Mészáros
+
+	Common: Changed FieldsChunk serialization to work with non-byte aligned
+	chunks.
+
+2017-04-12  Levente Mészáros
+
+	Common: Removed superfluous destructor.
+
+2017-04-12  Levente Mészáros
+
+	Serializer: Removed discouraged setChunkLength calls from deserializers.
+
+	FieldsChunkSerializer base class calls setChunkLength() anyway.
+
+2017-04-12  Levente Mészáros
+
+	Serializer: Added missing overrides.
+
+2017-04-11  Levente Mészáros
+
+	Common: Renamed to Total(De)serializedLength now that its type is bit.
+
+2017-04-11  Levente Mészáros
+
+	All: Added type alias for std::shared_ptr called Ptr, this allows
+	replacing the default implementation.
+
+2017-04-11  Levente Mészáros
+
+	Common: Added new asserts for chunk length.
+
+2017-04-11  Levente Mészáros
+
+	Common: Completed MemoryInputStream implementation for bit streaming.
+
+2017-04-11  Levente Mészáros
+
+	Common: Completed MemoryOutputStream implementation for bit streaming.
+
+2017-04-11  Levente Mészáros
+
+	Common: Renamed to MemoryInputStream and MemoryOutputStream.
+
+2017-04-06  Levente Mészáros
+
+	Common: Moved allocation from streams to call sites.
+
+2017-04-06  Levente Mészáros
+
+	Common: Pushed loops towards streams.
+
+2017-04-06  Levente Mészáros
+
+	Common: Refactored BytesChunk utility functions.
+
+2017-04-06  Levente Mészáros
+
+	Common: Fixed remaining TODOs after CHECK refactor.
+
+2017-04-05  Zoltan Bojthe
+
+	common: InetPacketPrinter
+
+2017-04-05  Zoltan Bojthe
+
+	ping-icmp-icmpv6-EchoProtocol: drop PingPayload, icmp headers contain the
+	identifier and sequence number
+
+2017-04-03  Zoltan Bojthe
+
+	common: header position in NetworkProtocolInd tag replaced to shared ptr
+	of the network header
+
+2017-04-06  Levente Mészáros
+
+	Common: Changed hasDataAt<T> to use has<T> from Chunk.
+
+2017-04-06  Levente Mészáros
+
+	Common: Added some more checks.
+
+2017-04-06  Levente Mészáros
+
+	Common: Fixed bug related to moving the iterators beyond each other.
+
+2017-04-06  Levente Mészáros
+
+	Common: Replaced plain asserts with CHECK macros to allow
+	disabling/enabling them.
+
+2017-04-03  Levente Mészáros
+
+	Common: Replaced nullptr contents with EmptyChunk in Packet and
+	ChunkQueue.
+
+	Fixed some minor bugs related to iterators and added a whole lot of new
+	asserts.
+
+2017-03-31  Levente Mészáros
+
+	Common: Fixed setting trailer pop offset.
+
+2017-03-30  Levente Mészáros
+
+	Common: Added a lot of documentation to Chunk.
+
+2017-03-29  Levente Mészáros
+
+	Common: Added asserts and updated comments.
+
+2017-03-29  Levente Mészáros
+
+	Common: Fixed some GCC warnings.
+
+2017-03-29  Levente Mészáros
+
+	Common: Fixed compilation errors for GCC.
+
+2017-03-29  Levente Mészáros
+
+	Common: Fixed peeking incomplete FieldsChunk.
+
+2017-03-29  Levente Mészáros
+
+	Common: Added PF_ALLOW_SERIALIZATION flag.
+
+2017-03-29  Levente Mészáros
+
+	Common: Reanmed to peekConverted.
+
+2017-03-29  Levente Mészáros
+
+	Common: Added flags argument to peekWithConversion and converChunk.
+
+2017-03-29  Levente Mészáros
+
+	Common: Added totalLength to msg file.
+
+2017-03-29  Levente Mészáros
+
+	Common: Renamed to Packet::getTotalLength and ChunkQueue::getLength.
+
+2017-03-29  Levente Mészáros
+
+	Common: Added flags to peekAll*.
+
+2017-03-29  Levente Mészáros
+
+	Common: Added insertHeader and insertTrailer to Packet.
+
+2017-03-24  Zoltan Bojthe
+
+	ppp: PppTrailerSerializer: KLUDGE
+
+2017-03-24  Zoltan Bojthe
+
+	pcapRecorder: add comment
+
+2017-03-24  Zoltan Bojthe
+
+	TCPIPchecksum: removed the special pseudoheader-related checksum()
+	function
+
+2017-03-28  Levente Mészáros
+
+	Common: Renamed some function to peekAll* to include a discriminator.
+
+2017-03-28  Levente Mészáros
+
+	Common: Added missing documentation to the packet level.
+
+2017-03-28  Levente Mészáros
+
+	Common: Added convenience peek functions to ChunkQueue.
+
+2017-03-28  Levente Mészáros
+
+	Common: Renamed to getPoppedLength and getPushedLength.
+
+2017-03-28  Levente Mészáros
+
+	Common: Added removeHeader and removeTrailer which return mutable chunks.
+
+2017-03-27  Levente Mészáros
+
+	Common: Did some cleanup.
+
+2017-03-27  Levente Mészáros
+
+	Common: Dropped obsolete member functions from Chunk.
+
+2017-03-27  Levente Mészáros
+
+	Common: Replaced std::function with plain old function pointers for
+	efficiency.
+
+2017-03-24  Levente Mészáros
+
+	Common: Renamed to convertChunk.
+
+2017-03-24  Levente Mészáros
+
+	Common: Added convenience methods peekData() and peek().
+
+2017-03-24  Levente Mészáros
+
+	Common: Refactored chunk API implementation, no external changes.
+
+2017-03-22  Zoltan Bojthe
+
+	common: FieldsChunk: public handleChange(), protected
+	get/setSerializedBytes()
+
+2017-03-20  Zoltan Bojthe
+
+	applications: serializers
+
+2017-03-22  Levente Mészáros
+
+	Common: Implemented peeking with conversion using backward iterator.
+
+2017-03-22  Levente Mészáros
+
+	Common: Added Chunk::simplify and usages where appropriate.
+
+2017-03-22  Levente Mészáros
+
+	Common: Added flags arguments to peek & pop in ChunkQueue.
+
+2017-03-21  Levente Mészáros
+
+	Common: Removed some completed or obsolete TODOs.
+
+2017-03-21  Levente Mészáros
+
+	Common: Revived uncommented assert.
+
+2017-03-21  Levente Mészáros
+
+	Common: Added chunk id.
+
+2017-03-21  Levente Mészáros
+
+	Common: Set chunkLength according to actually deserialized length.
+
+2017-03-21  Levente Mészáros
+
+	Common: Added asserts for chunk length after (de)serialization.
+
+2017-03-21  Levente Mészáros
+
+	Common: Added chunkLength to FieldsChunk.
+
+2017-03-17  Zoltan Bojthe
+
+	common: Packet: getEncapsulatedPacket() returns nullptr, shouldn't throw
+	exception
+
+	getEncapsulatedPacket() used by qtenv/tkenv GUI
+
+2017-03-29  Zoltan Bojthe
+
+	icmpv6: optimized, fixed memory leaks, fixes
+
+2017-03-17  Zoltan Bojthe
+
+	common: SequenceChunk: throws error when insert a 0 length chunk
+
+2017-03-09  Zoltan Bojthe
+
+	TcpHeaderSerializer: kludge for fingerprint tests
+
+2017-03-20  Levente Mészáros
+
+	Common: Fixed some documentation strings.
+
+2017-03-20  Levente Mészáros
+
+	Common: Renamed to peekWithConversion.
+
+2017-03-20  Levente Mészáros
+
+	Common: Moved peekUnchecked to protected region.
+
+2017-03-20  Levente Mészáros
+
+	Common: Dropped assert* function from public interface.
+
+2017-03-20  Levente Mészáros
+
+	Common: Overridden flag reader functions for SequenceChunk and
+	SliceChunk.
+
+2017-03-20  Levente Mészáros
+
+	Common: Changed all flag reader functions to be virtual.
+
+2017-03-17  Levente Mészáros
+
+	Common: Moved byte serialization loops into streams.
+
+2017-03-17  Levente Mészáros
+
+	Common: Removed special case for returning complete/incomplete chunks.
+
+2017-03-17  Zoltan Bojthe
+
+	common: Packet::hasBitError() uses cPacket::hasBitError(), added TODO:
+	should be implement the setBitError(), too
+
+2017-03-17  Levente Mészáros
+
+	Common: Implemented flags argument for various peek functions.
+
+2017-03-17  Levente Mészáros
+
+	fixup Type enum rename
+
+2017-03-17  Levente Mészáros
+
+	Common: Renamed enum to ChunkFlag and changed prefix.
+
+2017-03-17  Levente Mészáros
+
+	Common: Renamed enum to ChunkType and changed prefix.
+
+2017-03-17  Levente Mészáros
+
+	Common: Renamed to peekUnchecked.
+
+2017-03-17  Levente Mészáros
+
+	Common: Added peekBits and peekDataBits to Packet.
+
+2017-03-17  Levente Mészáros
+
+	Common: Fixed SequenceChunkSerializer bug.
+
+2017-03-16  Zoltan Bojthe
+
+	common: Packet: bugfix: removeFrom...() functions truncated BytesChunk to
+	zero length when remove all bytes
+
+2017-03-13  Zoltan Bojthe
+
+	common: ByteOutputStream: bugfix: length = -1 means to end of the input
+	vector
+
+2017-03-13  Zoltan Bojthe
+
+	common: optimized serializing
+
+2017-03-17  Levente Mészáros
+
+	Common: Added flags optional parameter to peek variants.
+
+2017-03-16  Levente Mészáros
+
+	Pcap: Removed unused IPv4 and IPv6 specific code.
+
+2017-03-16  Levente Mészáros
+
+	Common: Added override for hasBitError.
+
+2017-03-16  Levente Mészáros
+
+	UDO: Properly implemented CRC handling.
+
+2017-03-16  Levente Mészáros
+
+	Common: Added another unsupported function override.
+
+2017-03-16  Levente Mészáros
+
+	Common: Dropped setters from ByteOutputStream.
+
+2017-03-16  Levente Mészáros
+
+	All: Changed to use peekBytes and peekDataBytes for simplicity.
+
+2017-03-16  Levente Mészáros
+
+	Common: Added peekDataBytes and peekBytes to Packet for convenience.
+
+2017-03-09  Levente Mészáros
+
+	Common: Fixed slice of slice bug.
+
+2017-03-08  Zoltan Bojthe
+
+	common: BytesChunk: consructor, setter, getter for buffer specified by
+	pointer and length
+
+2017-03-08  Zoltan Bojthe
+
+	common: ByteInputStream: construct from a buffer specified by pointer and
+	length
+
+2017-02-21  Zoltan Bojthe
+
+	common: ProtocolGroup: added gnp and mpls for PPP
+
+2017-03-06  Levente Mészáros
+
+	Common: Added more detailed class descriptors.
+
+2017-03-06  Levente Mészáros
+
+	Common: Renamed to getQueueLength.
+
+2017-03-06  Levente Mészáros
+
+	Common: Fixed syntax.
+
+2017-03-02  Levente Mészáros
+
+	Common: Renamed to ChunkSerializerRegistry.
+
+2017-03-02  Levente Mészáros
+
+	Common: Split Serializer.cc and Serializer.h according to classes.
+
+2017-03-02  Levente Mészáros
+
+	Common: Extracted Chunk.msg from Packet.msg
+
+2017-03-02  Levente Mészáros
+
+	Common: Moved byte streams under common.
+
+2017-03-02  Levente Mészáros
+
+	Common: Moved packet recorders under common/packet/recorder.
+
+2017-03-02  Levente Mészáros
+
+	Common: Moved packet printers under common/packet/printer.
+
+2017-03-02  Levente Mészáros
+
+	Common: Moved ChunkSerializer under common/packet/serializer.
+
+2017-03-02  Levente Mészáros
+
+	Common: Updated documentation.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Removed unused code.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Ported somewhat but temporarily disabled 802.11 serializer
+	until the new 802.11 model is merged in.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Ported IGMPHeaderSerializer to new API.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Ported ICMPv6HeaderSerializer to new API.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Ported IPv6HeaderSerializer to new API.
+
+2017-02-22  Levente Mészáros
+
+	Serializer: Extracted PingPayloadSerializer.
+
+2017-02-22  Levente Mészáros
+
+	Serializer: Ported serialization of TCP options.
+
+2017-02-22  Levente Mészáros
+
+	Serializer: Ported serialization of IPv4 options.
+
+2017-02-22  Levente Mészáros
+
+	Serializer: Added missing overrides and moved functions to protected
+	secion.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Moved headerserializers one level up.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Changed to use a reference.
+
+2017-02-21  Levente Mészáros
+
+	All: Fixed minor issues caused by dropping obsolete serializers.
+
+2017-02-21  Levente Mészáros
+
+	Serialier: Dropped obsolete serializers.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Ported TcpHeaderSerializer partially.
+
+2017-02-21  Zoltan Bojthe
+
+	common: removed obsolete RawPacket
+
+2017-02-21  Zoltan Bojthe
+
+	common: removed obsolete FlatPacket msg
+
+2017-02-21  Zoltan Bojthe
+
+	common: ProtocolGroup: PPP: added IPv6, modified www link
+
+2017-02-08  Zoltan Bojthe
+
+	common: INETDefs: fixed CHK() for shared_ptr
+
+2017-02-21  Levente Mészáros
+
+	Common: Extended PcapRecorder with pacpNetwork and dumpProtocols
+	parameters.
+
+2017-02-21  Levente Mészáros
+
+	Common: Added network type parameter to PcapDump.
+
+2017-02-21  Levente Mészáros
+
+	Common: Changed PcapRecorder to dump Ethernet, PPP and 802.11 frames too.
+
+2017-02-21  Levente Mészáros
+
+	Common: Added PPP protocol identifier and PPP protocol group.
+
+2017-02-21  Levente Mészáros
+
+	Common: Revived PcapDump for IPv4/Ethernet packets.
+
+2017-02-21  Levente Mészáros
+
+	Common: Temporarily disabled IPv4 dump in TCPDump.
+
+2017-02-21  Levente Mészáros
+
+	Common: Fixed writing MAC addresses.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Cosmetics in UdpHeaderSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Completed the port of Ethernet*Serializers.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Ported IPv4HeaderSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Added ICMPHeaderSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Added PppHeaderSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Cosmetics in ARPPacketSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Added ApplicationPacketSerializer.
+
+2017-02-16  Levente Mészáros
+
+	Serializer: Ported EthernetHeaderSerializer to the new API.
+
+2017-02-16  Levente Mészáros
+
+	Serializer: Ported ARPPacketSerializer to new API.
+
+2017-02-16  Levente Mészáros
+
+	Common: Changed readByteRepeatedly() to return whether it was successful
+	or not.
+
+2017-02-16  Levente Mészáros
+
+	Common: Extended byte streams with address reader/writers.
+
+2017-02-16  Levente Mészáros
+
+	Serializer: Ported UdpHeaderSerializer to new API.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed ICMPv6Message to ICMPv6Header.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed IPv6Datagram to IPv6Header.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed ICMPMessage to ICMPHeader.
+
+2017-02-07  Levente Mészáros
+
+	Common: Fixed removePoppedTrailers.
+
+2017-02-03  Levente Mészáros
+
+	Common: Temporarily disabled IPv6 dumping.
+
+2017-02-03  Levente Mészáros
+
+	Serializer: Disabled compiling IPv6 related serializers.
+
+2017-02-06  Levente Mészáros
+
+	Common: Fixed Packet::removePopped* when contents is nullptr.
+
+2017-02-06  Levente Mészáros
+
+	Common: Split removePoppedParts and renamed it.
+
+2017-02-06  Levente Mészáros
+
+	Common: Removed superfluous bit() calls.
+
+2017-02-03  Zoltan Bojthe
+
+	Packet fixes
+
+2017-02-03  Levente Mészáros
+
+	All: Renamed to INetworkHeader.
+
+2017-02-02  Levente Mészáros
+
+	Common: Change Chunk str to print the class name.
+
+2017-02-01  Levente Mészáros
+
+	Common: KLUDGE: Temporarily commented out assert.
+
+2017-02-01  Levente Mészáros
+
+	Common: Added artificial echo protocol.
+
+2017-03-07  Levente Mészáros
+
+	igmp
+
+2017-01-31  Zoltan Bojthe
+
+	NetworkProtocolTag: uses bit type
+
+2017-01-31  Zoltan Bojthe
+
+	Packet: renamed getHeaderPoppedByteCount() and
+	getTrailerPoppedByteCount(), added removePoppedParts()
+
+2017-01-30  Zoltan Bojthe
+
+	INETDefs: added CHK() and __checknull() for shared_ptr
+
+2017-03-29  Zoltan Bojthe
+
+	TODO CSMA: Added temporary kludges to pass fingerprint tests.
+
+2017-01-25  Zoltan Bojthe
+
+	ethernet
+
+2017-01-11  Zoltan Bojthe
+
+	ipv4: ARP
+
+2016-12-16  Levente Mészáros
+
+	tcp
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPHeader renamed to UdpHeader
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPPacket renamed to UdpHeader
+
+2017-01-25  Zoltan Bojthe
+
+	ipv4: renamed IPv4Datagram to IPv4Header
+
+2017-01-25  Zoltan Bojthe
+
+	eth: phy layer frames moved to EtherPhyFrame.msg
+
+2017-01-25  Zoltan Bojthe
+
+	x
+
+2017-01-23  Levente Mészáros
+
+	Common: Fixed variable name.
+
+2017-01-23  Levente Mészáros
+
+	Common: Dropped asserts already checked by units.
+
+2017-01-23  Levente Mészáros
+
+	Common: Changed length, offset fields and parameters to use the new bit
+	or byte units.
+
+2017-01-23  Levente Mészáros
+
+	Common: Added integer based bit and byte units.
+
+	Units automatically check conversion loss from bit to bytes.
+
+2017-01-19  Levente Mészáros
+
+	Common: Changed Chunk classes to work with bit length instead of byte
+	length.
+
+	Also added BitCountChunk and BitsChunk.
+
+2017-01-18  Levente Mészáros
+
+	Common: Added byte array constructor to BitVector.
+
+2017-01-16  Zoltan Bojthe
+
+	SequenceChunk: removeFromEnd() bugfix
+
+2017-01-16  Levente Mészáros
+
+	Common: Added setBitLength override as an invalid operation.
+
+2017-01-09  Levente Mészáros
+
+	Common: Added important TODO.
+
+2017-01-18  Levente Mészáros
+
+	Common: Added some documentation.
+
+2017-01-18  Levente Mészáros
+
+	Common: Changed SequenceChunk to return another SequenceChunk when
+	peeking into subsequences.
+
+2017-01-06  Zoltan Bojthe
+
+	SliceChunk: info(): show offset/length first
+
+2016-12-23  Levente Mészáros
+
+	Commom: Fixed reference count checks for exclusive ownership.
+
+2016-12-21  Levente Mészáros
+
+	Common: Added assert.
+
+2016-12-21  Levente Mészáros
+
+	Common: Removed mutability functions from Packet.
+
+2016-12-21  Levente Mészáros
+
+	Common: Changed Packet to work with immutable chunks.
+
+2016-12-21  Levente Mészáros
+
+	Common: Removed virtual qualifier.
+
+2016-12-19  Levente Mészáros
+
+	Common: Fixed offset bug.
+
+2016-12-19  Levente Mészáros
+
+	Common: Fixed assert.
+
+2016-12-19  Levente Mészáros
+
+	Common: Fixed assert and added note.
+
+2016-12-19  Levente Mészáros
+
+	Common: Fixed ChunkBuffer eraseEmptyRegions.
+
+2016-12-19  Levente Mészáros
+
+	Common: Changed insertion to reuse front/back chunk if possible.
+
+2016-12-19  Levente Mészáros
+
+	Common: Added TODOs to Packet.
+
+2016-12-19  Levente Mészáros
+
+	Common: Added markMutableIfExclusivelyOwned to Chunk for performance
+	reasons.
+
+2016-12-19  Levente Mészáros
+
+	Common: Changed ChunkBuffer data chunks to be immutable.
+
+2016-12-19  Levente Mészáros
+
+	Common: Cleaned up asserts.
+
+2016-12-19  Levente Mészáros
+
+	Common: Extracted canRemoveFromBeginning and canRemoveFromEnd.
+
+2016-12-19  Levente Mészáros
+
+	Common: Renamed to canInsertAtBeginning and canInsertAtEnd.
+
+2016-12-16  Levente Mészáros
+
+	Common: Added documentation.
+
+2016-12-16  Levente Mészáros
+
+	Common: Changed partial chunks to be immutable.
+
+2016-12-16  Levente Mészáros
+
+	Common: Renamed enum member to TYPE_BYTECOUNT.
+
+2016-12-16  Levente Mészáros
+
+	Common: Extracted isInsertAtBeginningPossible and isInsertAtEndPossible.
+
+2016-12-16  Levente Mészáros
+
+	Common: Changed ChunkQueue to store an immutable chunk instead.
+
+2016-12-16  Levente Mészáros
+
+	Common: Changed peek to raise an error if mutable.
+
+2016-12-16  Levente Mészáros
+
+	Common: Added a bit of documentation.
+
+2016-12-16  Levente Mészáros
+
+	Common: Added str to ChunkBuffer.
+
+2016-12-16  Levente Mészáros
+
+	Common: Added a bunch of asserts.
+
+2016-12-16  Levente Mészáros
+
+	Common: Added guards for contents being nullptr.
+
+2016-12-16  Levente Mészáros
+
+	Common: Fixed typo in documentation.
+
+2016-12-16  Levente Mészáros
+
+	Common: Dropped mutability related function from ChunkQueue.
+
+2016-12-16  Levente Mészáros
+
+	Common: Added clear to ChunkQueue.
+
+2016-12-16  Levente Mészáros
+
+	Common: Added some more querying and modification functions to
+	ChunkBuffer.
+
+2016-12-16  Levente Mészáros
+
+	Common: Added more asserts and TODOs.
+
+2016-12-16  Levente Mészáros
+
+	Common: Fixed corner cases for iterators.
+
+2016-12-16  Levente Mészáros
+
+	Common: Fixed offset when inserting at the beginning.
+
+2016-12-16  Levente Mészáros
+
+	Common: Fixed ChunkBuffer slicing when new region cuts the beginning or
+	end of old region.
+
+2016-12-16  Levente Mészáros
+
+	Common: Fixed typo.
+
+2016-12-08  Levente Mészáros
+
+	Common: Fixed insertion bug in SequenceChunk.
+
+2016-12-07  Zoltan Bojthe
+
+	bugfix Packet: getPacketLength() without contents was generated null
+	pointer excepton
+
+2016-12-06  Levente Mészáros
+
+	Common: Cleaned up remnants.
+
+2016-12-06  Levente Mészáros
+
+	Test: Added more chunk buffer tests.
+
+2016-12-06  Levente Mészáros
+
+	Common: Added important note.
+
+2016-12-06  Levente Mészáros
+
+	Common: Renamed to markContentsImmutable and such.
+
+2016-12-06  Levente Mészáros
+
+	Common: Renamed to ChunkBuffer.
+
+2016-12-06  Levente Mészáros
+
+	Common: Renamed to ChunkQueue.
+
+2016-12-06  Levente Mészáros
+
+	Common: Refactored peek template functions to implement TODO item.
+
+2016-12-05  Levente Mészáros
+
+	Common: Implemented some TODOs.
+
+2016-12-05  Levente Mészáros
+
+	Common: Refactored peek internally.
+
+2016-12-05  Levente Mészáros
+
+	Common: Copied some function to Byte*Stream from old Buffer.
+
+2016-12-05  Levente Mészáros
+
+	Common: Split ByteStream.
+
+2016-12-05  Levente Mészáros
+
+	Common: Added and moved some TODOs.
+
+2016-12-05  Levente Mészáros
+
+	Common: Renamed to *proper* to *properlyRepresented*.
+
+2016-12-05  Levente Mészáros
+
+	Common: Added TODO.
+
+2016-12-05  Levente Mészáros
+
+	Common: Renamed *Immutable in Packet to to *ContentsImmutable.
+
+2016-12-05  Levente Mészáros
+
+	Common: Renamed make* to mark* in Chunk.
+
+2016-12-05  Levente Mészáros
+
+	Common: Renamed to FifoChunkBuffer.
+
+2016-12-05  Levente Mészáros
+
+	Common: Renamed to RegionedChunkBuffer.
+
+2016-12-05  Levente Mészáros
+
+	Common: Renamed LengthChunk to ByteCountChunk.
+
+2016-12-05  Levente Mészáros
+
+	Common: Split ReassemblyBuffer.
+
+2016-12-01  Levente Mészáros
+
+	Common: Completed some TODOs.
+
+2016-11-30  Levente Mészáros
+
+	Common: Refactored Packet/Chunk after review.
+
+2016-11-29  Levente Mészáros
+
+	All: Renamed old ReassemblyBuffer to OldReassemblyBuffer.
+
+2016-11-28  Levente Mészáros
+
+	Common: Cleaned up SequenceChunk.
+
+2016-11-28  Levente Mészáros
+
+	Common: Added getByte/setByte to BytesChunk.
+
+2016-11-25  Levente Mészáros
+
+	Common: Changed SliceChunk peek to return inner chunk if possible.
+
+2016-11-25  Levente Mészáros
+
+	Common: Moved iterator constructors to header allow inlining.
+
+2016-11-25  Levente Mészáros
+
+	Common: Switched to use the more efficient serialization.
+
+2016-11-25  Levente Mészáros
+
+	Common: Extracted createSerializer.
+
+2016-11-25  Levente Mészáros
+
+	Common: Cleaned up whitespace.
+
+2016-11-25  Levente Mészáros
+
+	Common: Added FieldsChunk and moved caching serialized bytes into
+	serializer.
+
+2016-11-24  Levente Mészáros
+
+	Common: Fixed default argument values.
+
+2016-11-24  Levente Mészáros
+
+	Common: Added pushHeader and pusTrailer for completeness.
+
+2016-11-24  Levente Mészáros
+
+	Common: Merged if branches following recent SequenceChunk append/prepend
+	refactor.
+
+2016-11-24  Levente Mészáros
+
+	Common: Enhanced peek.
+
+2016-11-24  Levente Mészáros
+
+	Common: Changed documentation and order of functions.
+
+2016-11-24  Levente Mészáros
+
+	Common: Added more assertions and did some cleanup.
+
+2016-11-24  Levente Mészáros
+
+	Common: Replaced std::vector with std::deque in SequenceChunk.
+
+2016-11-24  Levente Mészáros
+
+	Common: Replaced append/prepend with the generic
+	insertToBeginning/insertToEnd in SequenceChunk.
+
+2016-11-24  Levente Mészáros
+
+	Common: Added more documentation.
+
+2016-11-23  Levente Mészáros
+
+	Common: Added getPacketLength to Packet, and changed getByteLength to
+	return the length of the data part.
+
+2016-11-23  Levente Mészáros
+
+	Common: Renamed various byteOffset stuff to just offset.
+
+2016-11-23  Levente Mészáros
+
+	Common: Renamed various byteLength stuff to just length.
+
+2016-11-23  Levente Mészáros
+
+	Common: Renamed Chunk::getByteLength to Chunk::getChunkLength.
+
+2016-11-23  Levente Mészáros
+
+	Common: Renamed ByteArrayChunk to BytesChunk.
+
+2016-11-23  Levente Mészáros
+
+	Common: Renamed ByteLengthChunk to LengthChunk.
+
+2016-11-23  Levente Mészáros
+
+	Common: Cleanup.
+
+2016-11-22  Levente Mészáros
+
+	Common: Removed flatten flag because it's not needed anymore.
+
+2016-11-22  Levente Mészáros
+
+	Test: Dropped case from test and documentation.
+
+2016-11-22  Levente Mészáros
+
+	Common: Added peek override to SequenceChunk.
+
+2016-11-22  Levente Mészáros
+
+	Common: Dropped peek overload and added conversion constructor instead.
+
+2016-11-22  Levente Mészáros
+
+	Common: Renamed enum member to TYPE_FIELD.
+
+2016-11-22  Levente Mészáros
+
+	Common: Added ReassemblyBuffer class to support Tcp, Ipv4, Ipv6
+	fragmentation.
+
+2016-11-22  Levente Mészáros
+
+	Common: Added TODOs.
+
+2016-11-22  Levente Mészáros
+
+	Common: Fixed Chunk peek.
+
+2016-11-17  Levente Mészáros
+
+	Common: Added more documentation to Packet/Chunk.
+
+2016-11-17  Levente Mészáros
+
+	Common: Added missing insertToBeginning.
+
+2016-11-17  Levente Mészáros
+
+	Common: Added TODOs to Chunk.
+
+2016-11-17  Levente Mészáros
+
+	Common: Added remove functions to Packet.
+
+2016-11-17  Zoltan Bojthe
+
+	~ packet descriptor
+
+2016-11-17  Levente Mészáros
+
+	Common: Fixed trailer iterator and added tests.
+
+2016-11-17  Zoltan Bojthe
+
+	Packet descriptor
+
+2016-11-17  Levente Mészáros
+
+	Common: Changed makeImmutable to be virtual.
+
+2016-11-17  Levente Mészáros
+
+	Common: Added some error handling.
+
+2016-11-17  Levente Mészáros
+
+	Common: Added more documentation to Packet/Chunk.
+
+2016-11-14  Zoltan Bojthe
+
+	Packet: added TODO
+
+2016-11-15  Levente Mészáros
+
+	Common: Fixed a few corner cases.
+
+2016-11-15  Levente Mészáros
+
+	Common: Finally we could get rid of these.
+
+2016-11-15  Levente Mészáros
+
+	Common: Moved peek to base class to allow dynamic dispatch.
+
+2016-11-15  Levente Mészáros
+
+	Common: Refactored Iterator to get rid of SequenceIterator completely.
+
+2016-11-15  Levente Mészáros
+
+	Common: Switched Packet to use generic chunk as data.
+
+2016-11-15  Levente Mészáros
+
+	Common: Cleaned up Packet/Chunk constructors.
+
+2016-11-15  Levente Mészáros
+
+	Common: Swapped order of arguments to be consistent with base class.
+
+2016-11-15  Levente Mészáros
+
+	Common: Moved some SequenceIterator functions to SequenceChunk.
+
+2016-11-15  Levente Mészáros
+
+	Common: Removed chunk field from Iterator.
+
+2016-11-15  Levente Mészáros
+
+	Common: Renamed Packet functions to get*Length.
+
+2016-11-15  Levente Mészáros
+
+	Common: Added absolute peek functions, and changed peekData to accept
+	offsets after headers.
+
+2016-11-15  Levente Mészáros
+
+	Common: Added more documentation.
+
+2016-11-15  Levente Mészáros
+
+	Common: Added getChunkType virtual function to avoid dynamic casts.
+
+2016-11-15  Levente Mészáros
+
+	Common: Removed TODO because msg compiler has been extended.
+
+2016-11-15  Levente Mészáros
+
+	Common: Replaced Chunk bools with flags.
+
+2016-11-14  Levente Mészáros
+
+	Common: Followed omnetpp msg compiler handleChange extension.
+
+2016-11-14  Levente Mészáros
+
+	Common: Changed Buffer to allow for non SequenceChunk representation.
+
+2016-11-14  Levente Mészáros
+
+	Common: Refactored iterators towards non SequenceChunk dependent
+	Packet/Buffer.
+
+2016-11-14  Levente Mészáros
+
+	Common: Merged ForwardIterator and BackwardIterator into base class to
+	avoid diamond subclassing.
+
+2016-11-14  Levente Mészáros
+
+	Common: Added peek to SliceChunk to avoid having slices of SliceChunks.
+
+2016-11-14  Levente Mészáros
+
+	Common: Extracted mergeToEnd.
+
+2016-11-14  Levente Mészáros
+
+	Common: Renamed to dupChunks to be consistent in naming.
+
+2016-11-14  Levente Mészáros
+
+	Common: Added documentation for various peek cases.
+
+2016-11-14  Levente Mészáros
+
+	Common: Changed copy constructor to return a mutable chunk.
+
+2016-11-14  Levente Mészáros
+
+	Common: Added pop, popHeader, popTrailer without template type parameter
+	to Packet/Buffer.
+
+2016-11-11  Levente Mészáros
+
+	Common: Added assertMutable() calls where needed.
+
+2016-11-11  Levente Mészáros
+
+	Common: Added ForwardIterator/BackwardIterator to Chunk.
+
+2016-11-11  Levente Mészáros
+
+	Common: Added dupShared() to Chunk.
+
+2016-11-11  Zoltan Bojthe
+
+	Packet: added FIXME
+
+2016-11-11  Levente Mészáros
+
+	Common: Refactored insert and remove in Chunk.
+
+2016-11-11  Zoltan Bojthe
+
+	SequenceChunk: check length of chunk before insert it
+
+2016-11-11  Zoltan Bojthe
+
+	SequenceChunk: seek(): bugfix: set index to invalid, when position is not
+	a chunk-border
+
+2016-11-09  Zoltan Bojthe
+
+	Packet: Register_Class was missed
+
+2016-11-09  Zoltan Bojthe
+
+	Packet: bugfix: const was missed
+
+2016-11-09  Levente Mészáros
+
+	Common: Updated TODOs.
+
+2016-11-09  Levente Mészáros
+
+	Common: Added cPacketChunk copy constructor.
+
+2016-11-09  Levente Mészáros
+
+	Common: Implemented cloning Packet, Buffer and Chunks.
+
+2016-11-08  Levente Mészáros
+
+	Common: Replaced peek2 with peek.
+
+2016-11-09  Levente Mészáros
+
+	Common: More complete Packet/Chunk implementation.
+
+2016-11-04  Levente Mészáros
+
+	Common: Added cache for serialized bytes in Chunks.
+
+2016-11-03  Levente Mészáros
+
+	Common: Cleaned up Serializer.
+
+2016-11-03  Levente Mészáros
+
+	Common: Removed const.
+
+2016-11-03  Levente Mészáros
+
+	Common: Added support for polymorphism to Packet/Chunk.
+
+2016-10-28  Levente Mészáros
+
+	Common: Moved peekAt() slow path into Chunk.
+
+2016-10-28  Levente Mészáros
+
+	Common: Changed deserialize to support polymorphism.
+
+2016-10-27  Levente Mészáros
+
+	Common: Minor cleanups.
+
+2016-10-27  Levente Mészáros
+
+	Common: Added ENABLE_CHUNK_SERIALIZATION to prevent unpredictable
+	performance degradation.
+
+2016-11-03  Zoltan Bojthe
+
+	cPacketChunk
+
+2016-11-02  Zoltan Bojthe
+
+	descriptors for Packet, Chunk, ...
+
+2016-10-28  Zoltan Bojthe
+
+	udp - IN WORK
+
+2016-10-28  Zoltan Bojthe
+
+	cPacketChunk: added TODO, added removePacket(), take/drop
+
+2016-10-28  Zoltan Bojthe
+
+	Packet: fixed length
+
+	cPacket::getByteLength() is not a virtual function
+
+	cPacket::getByteLength():
+	in original omnetpp: calculated bytelength from bitlength field,
+	in modified omnetpp: calculated bytelength from getBitLength() virtual
+	function
+
+2016-10-28  Zoltan Bojthe
+
+	Packet: constructor with name and kind
+
+2016-10-27  Levente Mészáros
+
+	Common: Fixed serializer class names.
+
+2016-10-27  Levente Mészáros
+
+	Common: Moved Packet/Chunk classes under inet namespace.
+
+2016-10-27  Levente Mészáros
+
+	Common: Fixed include path.
+
+2016-10-27  Levente Mészáros
+
+	Common: Added missing cPacketChunk.
+
+2016-10-27  Levente Mészáros
+
+	Common: Cleanup related to Packet and Chunk.
+
+2016-10-27  Levente Mészáros
+
+	Common: Added isIncorrect() to Chunk.
+
+2016-10-27  Levente Mészáros
+
+	Common: Added byte length counters to Buffer.
+
+2016-10-27  Levente Mészáros
+
+	Common: Moved some functions to cc files.
+
+2016-10-28  Zoltan Bojthe
+
+	Common: Split Chunk.cc and Chunk.h.
+
+2016-10-26  Levente Mészáros
+
+	Common: Merged prepend and append variations.
+
+2016-11-02  Zoltan Bojthe
+
+	~ old Chunk renamed to FlatChunk
+
+2016-10-26  Zoltan Bojthe
+
+	old Chunk renamed to FlatChunk
+
+2016-10-26  Levente Mészáros
+
+	Common: Added new Chunk based Packet implementation.
+
+2017-01-25  Zoltan Bojthe
+
+	TCPSegment renamed to TcpHeader
+
+2016-10-17  Zoltan Bojthe
+
+	some pointer cast optimized
+
+2016-10-17  Zoltan Bojthe
+
+	tcpserializer fix
+
+2016-10-14  Zoltan Bojthe
+
+	tcp fixes
+
+2016-10-14  Zoltan Bojthe
+
+	FlatPacket: TCP uses it (lwIP, NSC is incomplete)
+
+2016-10-14  Zoltan Bojthe
+
+	FlatPacket changes
+
+2016-10-10  Zoltan Bojthe
+
+	added FlatPacket, Chunk, PacketChunk descriptors
+
+2016-10-10  Zoltan Bojthe
+
+	FlatPacket::getChunkIndex() : uses std::find()
+
+2016-10-10  Zoltan Bojthe
+
+	FlatPacket::getOwnerPacket(): using typeid()
+
+2016-10-10  Zoltan Bojthe
+
+	FlatPacket: cached packet length
+
+2016-10-10  Zoltan Bojthe
+
+	FlatPacket: comments
+
+2016-10-10  Zoltan Bojthe
+
+	REVIEW: FlatPacket FIXMEs
+
+2016-10-10  Zoltan Bojthe
+
+	FlatPacket
+
+2016-10-06  Zoltan Bojthe
+
+	FlatPacket: remove unnecessary function setByteLength()
+
+2016-10-05  Zoltan Bojthe
+
+	udp with flatpacket
+
+2016-10-03  Zoltan Bojthe
+
+	TMP - UDP uses FlatPacket - not completed
+
+2016-10-26  Zoltan Bojthe
+
+	refactoring: removed compatibility macros required for OMNeT++ 4.x builds
+	+ warning fixes
+
+2016-10-19  Zoltan Bojthe
+
+	ModuleAccess: getters/finders let const functions
+
+2016-08-03  Zoltan Bojthe
+
+	MSG: @fieldNameSuffix("_var") removed when @omitGetVerb(true) not used
+
+2016-07-25  Andras Varga
+
+	compatibility: in omnetpp-5.1, cResultFilterDescriptor was renamed to
+	cResultFilterType
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: replace deprecated cQueue functions: operator(), length(),
+	empty()
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: remove obsolete omnetpp 4.x code (#if OMNETPP_VERSION < 0x500)
+
+2016-06-28  Levente Mészáros
+
+	Common: Fixed dispatching lower layer commands.
+
+2016-06-20  Zoltan Bojthe
+
+	MessageDispatcher: added Enter_Method_Silent()
+
+2016-06-16  Levente Mészáros
+
+	NED: Changed @display strings for better positioning, icons, etc.
+
+2016-06-16  Levente Mészáros
+
+	NED: Removed icon size specification from module definitions.
+
+	We should use is=s instead in the submodule display strings when
+	appropriate.
+
+2016-06-16  Zoltan Bojthe
+
+	Test: Updated fingerprints to complete the lo0 --> lo[*] refactor."
+
+	fingerprints not changed
+
+2016-06-16  Zoltan Bojthe
+
+	Test: Updated fingerprints to prepare for the lo0 --> lo[*] refactor.
+
+	This patch greatly simplifies the comparison of fingerprints before and
+	after.
+
+	The updated fingerprints:
+	- module path words '.lo0' replaced with 'lo[0]'
+
+2016-06-16  Zoltan Bojthe
+
+	Test: Updated fingerprints to complete the ARP refactor.
+
+2016-06-16  Zoltan Bojthe
+
+	Test: Updated fingerprints to prepare for the ARP refactor.
+
+	This patch greatly simplifies the comparison of fingerprints before and
+	after.
+
+	The updated fingerprints doesn't include:
+	- ARPPacket packets in IPv4 and ARP modules
+	- self messages in IPv4 modules
+
+2016-06-13  Zoltan Bojthe
+
+	Test: Updated fingerprints to complete the PingApp refactor.
+
+2016-06-09  Zoltan Bojthe
+
+	Test: Updated fingerprints to prepare for the PingApp refactor.
+
+	This patch greatly simplifies the comparison of fingerprints before and
+	after.
+
+	The updated fingerprints don't include:
+	- ICMP_ECHO_REPLY in ICMP modules
+	- ICMPv6_ECHO_REPLY in ICMPv6 modules
+	- ICMPv6_ECHO_REPLY in EchoProtocol modules
+	- PingPayload packets from directSend() in ICMP/ICMPv6/EchoProtocol
+	modules
+	- messages with L3SocketCommand control info
+
+	In PingApp modules:
+	- if arrived packet is ICMPMessage/ICMPv6Message/EchoPacket and contains
+	  an echo reply, then use the encapsulated PingPayload in fingerprint
+	calculation
+	- drop all other ICMPMessage/ICMPv6Message/EchoPacket
+
+2016-06-03  Zoltan Bojthe
+
+	Test: Updated fingerprints to complete the application layer refactor.
+
+	All fingerprint tests were passed before this commit except all 4 SCTP
+	examples. Dropped CustomFingerprintCalculator and regenerated standard
+	fingerprints.
+
+2016-06-01  Zoltan Bojthe
+
+	Test: Updated fingerprints to prepare for the application layer refactor.
+
+	Added CustomFingerprintCalculator to replace udpApp[*], tcpApp[*],
+	sctpApp[*], pingApp[*], app[*] to application className.
+
+2016-05-31  Zoltan Bojthe
+
+	Test: Updated fingerprints to complete the TCP accept refactor.
+
+	All fingerprint tests were passed before this commit. Dropped
+	CustomFingerprintCalculator and regenerated standard fingerprints.
+
+2016-05-30  Zoltan Bojthe
+
+	Test: Updated fingerprints to prepare for the TCP accept refactor.
+
+	Added a CustomFingerprintCalculator, all fingerprint tests passed except
+	for httptools/socket/tenserverssocket.
+
+	Unfortunately the httptools/socket/tenserverssocket/ examples have too
+	many nodes and this causes even ordering issues, thus different
+	fingerprints.
+
+2016-05-30  Levente Mészáros
+
+	Test: Updated fingerprints to complete the MessageDispatcher refactor.
+
+	All fingerprint tests were passed before this commit. Dropped
+	CustomFingerprintCalculator and regenerated standard fingerprints.
+
+2015-07-01  Zoltan Bojthe
+
+	Common: Added findContainingNicModule() and getContainingNicModule() to
+	ModuleAccess.
+
+2015-06-11  Levente Mészáros
+
+	Common: Added new control info classes to specify protocol ids and socket
+	ids.
+
+2015-06-11  Levente Mészáros
+
+	Common: Added new listener interfaces for protocol and interface
+	registration.
+
+2015-06-11  Levente Mészáros
+
+	Common: Added new generic MessageDispatcher class.
+
+	This module connects multiple protocol to another set of multiple
+	protocols between two protocol layers. It dispatches protocol specific
+	packets, socket messages, and interface specific packets according to the
+	received registrations.
+
+2015-06-11  Levente Mészáros
+
+	Common: Added new Protocol and ProtocolGroup classes.
+
+	This allows easier identification of protocols between protocol
+	components and the message dispatcher.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

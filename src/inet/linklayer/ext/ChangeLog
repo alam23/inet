@@ -1,3 +1,58 @@
+====== inet-4.x ======
+
+2017-10-11  Zoltan Bojthe
+
+	eth: moved ethertype constants to new EtherType.msg file, dropped some
+	unused ethernet  related structs
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up includes.
+
+2017-09-13  Levente Mészáros
+
+	Link: Removed EtherTypeTag dependency from cSocketRTScheduler.
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-08-02  Zoltan Bojthe
+
+	ipv4: camelcase: IPv4Header --> Ipv4Header, ICMPHeader --> IcmpHeader
+
+2017-06-14  Zoltan Bojthe
+
+	linklayer: ExtInterface uses Packet (not tested)
+
+2017-01-25  Zoltan Bojthe
+
+	ipv4: renamed IPv4Datagram to IPv4Header
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: remove obsolete omnetpp 4.x code (#if OMNETPP_VERSION < 0x500)
+
+2015-07-01  Zoltan Bojthe
+
+	NED: Added @nic property to all network interfaces.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

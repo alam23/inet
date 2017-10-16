@@ -1,3 +1,321 @@
+====== inet-4.x ======
+
+2017-10-09  Zoltan Bojthe
+
+	transportlayer: using insertTransportProtocolHeader(), and fix it
+
+2017-09-27  Zoltan Bojthe
+
+	icmp, icmpv6: added crc mode
+
+	udp: checking crc on incoming icmp/icmpv6 packets PingApp: set crc
+
+2017-09-27  Zoltan Bojthe
+
+	udp: initialize: registerHook moved to later from STAGE_LOCAL
+
+2017-09-20  Zoltan Bojthe
+
+	networklayer: Netfilter hooks redesigned: functions have only the Packet
+	parameter, in/out interfaces and nextHop are TAGs on the packet
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-08-02  Zoltan Bojthe
+
+	ipv6: ICMPv6* headers, messages renamed to Icmpv6
+
+2017-08-02  Zoltan Bojthe
+
+	ipv6: camelcase: renamed IPv6*Header to Ipv6*Header
+
+2017-08-02  Zoltan Bojthe
+
+	ipv4: camelcase: IPv4Header --> Ipv4Header, ICMPHeader --> IcmpHeader
+
+2017-08-02  Zoltan Bojthe
+
+	udp: ~renamed to UdpHeader
+
+2017-07-05  Zoltan Bojthe
+
+	networklayer: "int get/setTransportProtocol()" replaced to "int
+	get/setProtocolId()", added "const Protocol* get/setProtocol()" ; uses
+	these
+
+2017-07-05  Levente Mészáros
+
+	All: Adapted transport protocols to use the new L3 tools.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-04-24  Zoltan Bojthe
+
+	netfilterhook: removed unnecessary pointer conversions
+
+2017-04-24  Zoltan Bojthe
+
+	L3, L4: added tools: peekNetworkHeader(), removeNetworkHeader(),
+	peekTransportHeader(), removeTransportHeader()
+
+2017-04-24  Zoltan Bojthe
+
+	L4: ITransportPacket replaced to the TransportHeaderBase (based on
+	FieldsChunk)
+
+2017-04-20  Levente Mészáros
+
+	All: Added TODOs.
+
+2017-04-10  Zoltan Bojthe
+
+	removed unused cPacketChunk
+
+2017-04-12  Levente Mészáros
+
+	L3: Removed getNetworkHeaderLength from INetworkHeader.
+
+2017-04-11  Levente Mészáros
+
+	All: Added type alias for std::shared_ptr called Ptr, this allows
+	replacing the default implementation.
+
+2017-04-11  Levente Mészáros
+
+	Common: Completed MemoryOutputStream implementation for bit streaming.
+
+2017-04-11  Levente Mészáros
+
+	Common: Renamed to MemoryInputStream and MemoryOutputStream.
+
+2017-04-07  Zoltan Bojthe
+
+	udp: dynamic_cast optimization, signed/unsigned int
+
+2017-04-03  Zoltan Bojthe
+
+	common: header position in NetworkProtocolInd tag replaced to shared ptr
+	of the network header
+
+2017-03-29  Zoltan Bojthe
+
+	udp: optimized with removeHeader()
+
+2017-03-29  Levente Mészáros
+
+	Common: Renamed to Packet::getTotalLength and ChunkQueue::getLength.
+
+2017-03-24  Zoltan Bojthe
+
+	tcp/udp: crc
+
+2017-03-17  Zoltan Bojthe
+
+	~udp: peek with flags
+
+2017-03-16  Levente Mészáros
+
+	UDO: Properly implemented CRC handling.
+
+2017-02-21  Levente Mészáros
+
+	UDP: Added crcMode parameter.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed ICMPv6Message to ICMPv6Header.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed IPv6Datagram to IPv6Header.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed ICMPMessage to ICMPHeader.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed a bunch of variables around popHeader and peekHeader.
+
+2017-02-06  Levente Mészáros
+
+	IPv6: Change to use the new Packet class, stage 1.
+
+2017-01-31  Zoltan Bojthe
+
+	NetworkProtocolTag: uses bit type
+
+2017-01-23  Levente Mészáros
+
+	All: Updated all affected protocols to use the new bit or byte units.
+
+2016-12-21  Levente Mészáros
+
+	All: Changed chunks to be immutable before appending/prepending to a
+	Packet.
+
+2016-12-16  Levente Mészáros
+
+	tcp
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPHeader renamed to UdpHeader
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPPacket renamed to UdpHeader
+
+2017-01-25  Zoltan Bojthe
+
+	ipv4: renamed IPv4Datagram to IPv4Header
+
+2016-12-08  Zoltan Bojthe
+
+	tcp, udp: pseudoheader, crc
+
+2017-01-25  Zoltan Bojthe
+
+	added @overridegetter
+
+2016-12-08  Zoltan Bojthe
+
+	udp: BitError renamed to CrcMode
+
+2016-12-07  Zoltan Bojthe
+
+	fixes after rebase
+
+2017-01-25  Zoltan Bojthe
+
+	x
+
+2016-11-30  Levente Mészáros
+
+	All: Followed recent changes in Packet.
+
+2016-11-25  Levente Mészáros
+
+	All: Replaced Chunk base class with FieldsChunk.
+
+2016-11-23  Levente Mészáros
+
+	Common: Renamed Chunk::getByteLength to Chunk::getChunkLength.
+
+2016-11-23  Levente Mészáros
+
+	Common: Renamed ByteArrayChunk to BytesChunk.
+
+2016-11-11  Zoltan Bojthe
+
+	udp: bugfix: seek back to udp header
+
+2016-11-03  Zoltan Bojthe
+
+	cPacketChunk
+
+2016-10-28  Zoltan Bojthe
+
+	udp - IN WORK
+
+2016-10-26  Zoltan Bojthe
+
+	old Chunk renamed to FlatChunk
+
+2016-10-14  Zoltan Bojthe
+
+	udp: fixes: mandatory owner FlatPacket
+
+2016-10-10  Zoltan Bojthe
+
+	udp: fixed memory leak
+
+2016-10-06  Zoltan Bojthe
+
+	udp: bugfixes
+
+2016-10-05  Zoltan Bojthe
+
+	udp with flatpacket: send up fix: send up cPacket of PacketChunk when it
+	is the unique chunk in flat packet
+
+2016-10-05  Zoltan Bojthe
+
+	udp with flatpacket
+
+2016-10-03  Zoltan Bojthe
+
+	TMP - UDP uses FlatPacket - not completed
+
+2016-08-03  Zoltan Bojthe
+
+	MSG: @fieldNameSuffix("_var") removed when @omitGetVerb(true) not used
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-06-28  Zoltan Bojthe
+
+	udp: sorted includes
+
+2016-06-28  Zoltan Bojthe
+
+	udp - icmp: fixed "icmp error answer to a fragmented udp packet" problems
+
+	 - fragmented udp maybe contains raw packet
+	- fragmented udp packet maybe not contains UDPPacket
+	- fragmented udp packet maybe contains entire UDPPacket,
+	  but the real packet does not contain udp header
+
+2016-06-23  Zoltan Bojthe
+
+	udp icmp: msg name setting
+
+2016-06-01  Levente Mészáros
+
+	UDP: Updated ICMP module path according to new network node
+	infrastructure.
+
+2016-06-01  Levente Mészáros
+
+	Transport: Added registerProtocol calls to transport protocols.
+
+2015-06-08  Levente Mészáros
+
+	UDP: Changed appIn/appOut gate vectors to simple gates.
+
+2016-05-31  Levente Mészáros
+
+	NED: Renamed networkLayer submodule to ipv4 and ipv6 submodules.
+
+2015-06-11  Levente Mészáros
+
+	UDP: Renamed sockId to socketId to be able to implement generic
+	interface.
+
+2016-05-02  Levente Mészáros
+
+	All: Added new registerProtocol() calls.
+
+2016-04-29  Levente Mészáros
+
+	Network: Dropped obsolete IPSocket.registerProtocol() calls.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

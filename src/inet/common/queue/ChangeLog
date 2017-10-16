@@ -1,3 +1,33 @@
+====== inet-4.x ======
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-12  Levente Mészáros
+
+	Common: Added packetDrop signals to REDDropper and ThresholdDropper.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NF_PACKET_DROP to packetDrop(Signal).
+
+2017-07-10  Levente Mészáros
+
+	Common: Updated queue module packet drop statistics.
+
+2017-07-12  Levente Mészáros
+
+	All: Replaced remaining packet drop signals with the generic one.
+
+2017-07-10  Levente Mészáros
+
+	All: Added reason codes where packet drop signals are emitted.
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

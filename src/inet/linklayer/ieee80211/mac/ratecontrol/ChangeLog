@@ -1,0 +1,9 @@
+====== inet-4.x ======
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-04-20  Levente Mészáros
+
+	802.11: Refactored to use the new Packet API.

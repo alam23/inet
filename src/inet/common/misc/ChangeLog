@@ -1,0 +1,26 @@
+====== inet-4.x ======
+
+2016-10-26  Zoltan Bojthe
+
+	refactoring: removed compatibility macros required for OMNeT++ 4.x builds
+	+ warning fixes
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: replace deprecated cQueue functions: operator(), length(),
+	empty()
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: remove obsolete omnetpp 4.x code (#if OMNETPP_VERSION < 0x500)
+
+2016-06-16  Levente Mészáros
+
+	NED: Removed icon size specification from module definitions.
+
+	We should use is=s instead in the submodule display strings when
+	appropriate.

@@ -1,0 +1,37 @@
+====== inet-4.x ======
+
+2017-07-12  Levente Mészáros
+
+	802.11: Refactored display string text in Edcaf.
+
+2017-07-12  Levente Mészáros
+
+	802.11: Added display string text tag to Dcaf.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Renamed frame variables to header where applicable.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed MAC header arguments to *Header.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed multiple header chunks.
+
+	Ieee80211DataFrame -> Ieee80211DataHeader Ieee80211DataOrMgmtFrame ->
+	Ieee80211DataOrMgmtHeader Ieee80211ManagementHeader ->
+	Ieee80211MgmtHeader Ieee80211ManagementFrame -> Ieee80211MgmtFrame
+
+2017-04-20  Levente Mészáros
+
+	802.11: Refactored to use the new Packet API.

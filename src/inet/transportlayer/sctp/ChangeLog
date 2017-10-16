@@ -1,3 +1,82 @@
+====== inet-4.x ======
+
+2017-08-02  Zoltan Bojthe
+
+	ipv4: camelcase: IPv4Header --> Ipv4Header, ICMPHeader --> IcmpHeader
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-05  Zoltan Bojthe
+
+	networklayer: "int get/setTransportProtocol()" replaced to "int
+	get/setProtocolId()", added "const Protocol* get/setProtocol()" ; uses
+	these
+
+2017-06-12  Zoltan Bojthe
+
+	sctp: added fixme for eliminate c-style cast at dup()
+
+2017-02-03  Levente Mészáros
+
+	All: Renamed to INetworkHeader.
+
+2017-01-25  Zoltan Bojthe
+
+	ipv4: renamed IPv4Datagram to IPv4Header
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: replace deprecated cQueue functions: operator(), length(),
+	empty()
+
+2016-06-27  Zoltan Bojthe
+
+	NetFilter Hook changes: auto unregister in destructor
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Added missing registerProtocol() call.
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Dropped vector gates from appIn/appOut and ipIn/ipOut.
+
+	This patch prepares for using SCTP with the MessageDispatcher node
+	infrastructure.
+
+2015-08-28  Zoltan Bojthe
+
+	SCTP: Replaced numeric constants with existing constant identifiers.
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Renamed input/output gates according to other transport protocols.
+
+	Renamed from_appl/to_appl to appIn/appOut. Renamed from_ip/to_ip to
+	ipIn/ipOut.
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Renamed assocId to socketId in SCTPCommand.
+
+2016-05-31  Levente Mészáros
+
+	NED: Renamed networkLayer submodule to ipv4 and ipv6 submodules.
+
+2016-05-02  Levente Mészáros
+
+	All: Added new registerProtocol() calls.
+
+2016-04-29  Levente Mészáros
+
+	Network: Dropped obsolete IPSocket.registerProtocol() calls.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

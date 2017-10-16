@@ -1,3 +1,60 @@
+====== inet-4.x ======
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NF_PACKET_DROP to packetDrop(Signal).
+
+2017-07-12  Levente Mészáros
+
+	All: Replaced remaining packet drop signals with the generic one.
+
+2017-02-03  Levente Mészáros
+
+	All: Renamed to INetworkHeader.
+
+2017-01-23  Levente Mészáros
+
+	All: Updated all affected protocols to use the new bit or byte units.
+
+2017-01-19  Levente Mészáros
+
+	Link: Renamed MACFrameBase to MacHeaderBase.
+
+2017-01-25  Zoltan Bojthe
+
+	CSMA: Changed to use the new Packet class.
+
+2016-10-26  Zoltan Bojthe
+
+	refactoring: removed compatibility macros required for OMNeT++ 4.x builds
+	+ warning fixes
+
+2016-05-02  Levente Mészáros
+
+	Link: Changed registerInterface calls to use the gate of the NIC module
+	if possible.
+
+	This simplifies interface registration process for compound mac modules.
+
+2016-05-02  Levente Mészáros
+
+	Link: Added new registerInterface() calls.
+
+2015-06-23  Levente Mészáros
+
+	Link: Added network protocol to BMac, LMac, CSMA frames.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

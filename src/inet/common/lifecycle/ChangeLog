@@ -1,0 +1,32 @@
+====== inet-4.x ======
+
+2017-07-06  Levente Mészáros
+
+	Common: Fixed incorrectly displayed NodeStatus submodule icon.
+
+	Added icon annotation instead of replacing the NodeStatus submodule icon.
+	Added watch for the state of the NodeStatus.
+
+2016-10-19  Zoltan Bojthe
+
+	ModuleAccess: getters/finders let const functions
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: replace deprecated cQueue functions: operator(), length(),
+	empty()
+
+2016-06-16  Levente Mészáros
+
+	NED: Changed @display strings for better positioning, icons, etc.
+
+2016-06-16  Levente Mészáros
+
+	NED: Removed icon size specification from module definitions.
+
+	We should use is=s instead in the submodule display strings when
+	appropriate.

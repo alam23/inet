@@ -1,3 +1,114 @@
+====== inet-4.x ======
+
+2017-09-28  TÖRÖK Attila
+
+	Remove the requirement for a TCPCommand ControlInfo from TCPSocket ctor.
+
+	I have no idea if this is a good change, review and merge accordingly.
+
+2017-09-14  Levente Mészáros
+
+	All: Removed obsolete TCP socket parameter dataTransferMode from all
+	implementations.
+
+	Updated applications and tests.
+
+2017-08-07  Zoltan Bojthe
+
+	typo, comment
+
+2017-07-12  Levente Mészáros
+
+	All: Dropped unused, obsolete RawPacket.
+
+2017-07-11  Zoltan Bojthe
+
+	udp: fixed getReceivedPacketInfo() output format
+
+	removed space between 'DSCP' and '='
+
+2017-04-24  Zoltan Bojthe
+
+	L4: ITransportPacket replaced to the TransportHeaderBase (based on
+	FieldsChunk)
+
+2017-01-05  Zoltan Bojthe
+
+	tcpapp
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPPacket renamed to UdpHeader
+
+2017-03-07  Levente Mészáros
+
+	~udp
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-07-21  Zoltan Bojthe
+
+	tcpsocket: getState() made const
+
+2016-06-16  Levente Mészáros
+
+	NED: Updated some documentation to reflect recent changes.
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Implemented required interfaces with SCTPCommand.
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Dropped vector gates from appIn/appOut and ipIn/ipOut.
+
+	This patch prepares for using SCTP with the MessageDispatcher node
+	infrastructure.
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Renamed input/output gates according to other transport protocols.
+
+	Renamed from_appl/to_appl to appIn/appOut. Renamed from_ip/to_ip to
+	ipIn/ipOut.
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Renamed assocId to socketId in SCTPCommand.
+
+2015-06-11  Levente Mészáros
+
+	Transport: Added ITransportProtocolControlInfo.
+
+2015-06-08  Levente Mészáros
+
+	UDP: Changed appIn/appOut gate vectors to simple gates.
+
+2016-06-03  Levente Mészáros
+
+	TCP: Changed appIn/appOut gate vectors to simple gates.
+
+2016-06-03  Levente Mészáros
+
+	TCP: Added explicit accept mechanism to listening.
+
+2015-06-11  Levente Mészáros
+
+	Transport: Implemented IProtocolControlInfo and ISocketControlInfo
+	interfaces with TCP/UDP control infos.
+
+2015-06-11  Levente Mészáros
+
+	UDP: Renamed sockId to socketId to be able to implement generic
+	interface.
+
+2015-06-11  Levente Mészáros
+
+	TCP: Renamed connId to socketId to be able to implement the
+	ISocketControlInfo interface.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------
@@ -14,23 +125,23 @@
 
 2017-01-09  Rudolf Hornig
 
-    build: fixed various message files not to redefine a field on inheritance
+	build: fixed various message files not to redefine a field on inheritance
 
 2016-11-24  Irene Ruengeler
 
-    Packetdrill: Add StreamReconfig support for SCTP
+	Packetdrill: Add StreamReconfig support for SCTP
 
 2016-09-22  Zoltan Bojthe
 
-    SCTPSocket: getters made const
+	SCTPSocket: getters made const
 
 2016-09-22  Zoltan Bojthe
 
-    omnetpp5: add/use refreshDisplay()
+	omnetpp5: add/use refreshDisplay()
 
 2016-07-21  Zoltan Bojthe
 
-    tcpsocket: getState() made const
+	tcpsocket: getState() made const
 
 2016-06-15  ------ inet-3.4.0 released ------
 

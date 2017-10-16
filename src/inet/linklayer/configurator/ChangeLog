@@ -1,3 +1,24 @@
+====== inet-4.x ======
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2016-10-26  Zoltan Bojthe
+
+	refactoring: removed compatibility macros required for OMNeT++ 4.x builds
+	+ warning fixes
+
+2016-06-16  Levente Mészáros
+
+	NED: Removed icon size specification from module definitions.
+
+	We should use is=s instead in the submodule display strings when
+	appropriate.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

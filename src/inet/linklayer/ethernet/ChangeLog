@@ -1,3 +1,289 @@
+====== inet-4.x ======
+
+2017-10-11  Zoltan Bojthe
+
+	eth: moved ethertype constants to new EtherType.msg file, dropped some
+	unused ethernet  related structs
+
+2017-10-09  Levente Mészáros
+
+	All: Fixed all problems with using the newly introduced intrusive shared
+	pointer.
+
+2017-09-26  Zoltan Bojthe
+
+	eth: added some missing PacketProtocolTag
+
+2017-09-26  Zoltan Bojthe
+
+	code style
+
+2017-09-22  Zoltan Bojthe
+
+	eth: fixing fcs calculations
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-09-13  Levente Mészáros
+
+	eth: Fixed signal tree id.
+
+2017-09-13  Levente Mészáros
+
+	Link: Added clearTags() and removePoppedChunks() calls when reusing
+	packets in relay units.
+
+2017-09-13  Levente Mészáros
+
+	eth: Replaced EtherPhyFrame with EthernetPhyHeader in MACs.
+
+2017-09-13  Levente Mészáros
+
+	eth: Replaced EtherPhyFrame with EthernetPhyHeader.
+
+2017-09-13  Levente Mészáros
+
+	eth: Renamed ethernet signals.
+
+2017-09-13  Levente Mészáros
+
+	eth: Renamed EtherTraffic to EthernetSignal and extracted jam processing.
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up unused code.
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up includes.
+
+2017-09-13  Levente Mészáros
+
+	eth: Removed _ from utility function names.
+
+2017-09-13  Levente Mészáros
+
+	eth: Merged remaining enums from EtherTypeTag.msg into EtherFrame.msg.
+
+2017-09-13  Levente Mészáros
+
+	Link: Renamed protocol to ieee8022 and protocol group to
+	ieee8022protocol.
+
+2017-09-12  Zoltan Bojthe
+
+	eth: EtherEncap extends Ieee8022Llc module
+
+2017-09-12  Zoltan Bojthe
+
+	eth: EtherEncap: normalized handleMessage
+
+2017-09-12  Zoltan Bojthe
+
+	eth: llc
+
+2017-09-12  Zoltan Bojthe
+
+	linklayer: using new ethernet header structures
+
+2017-09-12  Zoltan Bojthe
+
+	eth: renamed ethernet, llc and snap headers
+
+2017-09-11  Zoltan Bojthe
+
+	eth: new Ethernet header structures
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-08-09  Zoltan Bojthe
+
+	eth: Fcs verification
+
+2017-08-07  Zoltan Bojthe
+
+	typo, comment
+
+2017-07-31  Zoltan Bojthe
+
+	compiler warning fix: expression with side effects will be evaluated
+	despite being used as an operand to 'typeid'
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NF_PACKET_DROP to packetDrop(Signal).
+
+2017-07-10  Levente Mészáros
+
+	Link: Updated packet drop signals and statistics.
+
+2017-06-19  Levente Mészáros
+
+	All: Renamed and reordered PacketDropReason enum members.
+
+2017-07-12  Levente Mészáros
+
+	All: Replaced remaining packet drop signals with the generic one.
+
+2017-07-04  Levente Mészáros
+
+	All: Added more const qualifiers to Ptr<> where possible.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-06-12  Zoltan Bojthe
+
+	eliminate cast after dup()
+
+2017-04-11  Levente Mészáros
+
+	All: Added type alias for std::shared_ptr called Ptr, this allows
+	replacing the default implementation.
+
+2017-04-11  Levente Mészáros
+
+	Msg: Removed all chunkLength = -1 or chunkLength = 0 fields, they are
+	useless.
+
+2017-04-03  Zoltan Bojthe
+
+	eth: more precise comment
+
+2017-03-30  Zoltan Bojthe
+
+	eth: added verifyCrcAndLength(); remove padding in decapsulate() when the
+	header contains payload length
+
+	The decapsulate() splitted to verifyCrcAndLength() and decapsulate()
+	Added EtherFrameWithPayloadLength base header to msg file
+
+2017-03-30  Zoltan Bojthe
+
+	eth: added missing setPayloadLength()
+
+2017-03-28  Levente Mészáros
+
+	Common: Renamed some function to peekAll* to include a discriminator.
+
+2017-03-16  Levente Mészáros
+
+	All: Changed to use peekBytes and peekDataBytes for simplicity.
+
+2017-02-21  Levente Mészáros
+
+	All: Fixed minor issues caused by dropping obsolete serializers.
+
+2017-02-21  Zoltan Bojthe
+
+	common: removed obsolete RawPacket
+
+2017-02-21  Zoltan Bojthe
+
+	ethernet: added/used static EtherEncap::decapsulate() function
+
+2017-02-21  Levente Mészáros
+
+	Ethernet: Added sendRawBytes parameter to allow sending out serialized
+	packets.
+
+2017-02-21  Levente Mészáros
+
+	Ethernet: Added fcsMode parameter.
+
+2017-02-21  Levente Mészáros
+
+	Ethernet: Added missing payloadLength field.
+
+2017-02-21  Levente Mészáros
+
+	Ethernet: Added missing PacketProtocolTag after decapsulating from
+	EtherPhyFrame.
+
+2017-02-06  Levente Mészáros
+
+	Ethernet: Added missing PacketProtocolTag after decapsulation.
+
+2017-02-03  Zoltan Bojthe
+
+	ethernet fixup
+
+2017-01-31  Zoltan Bojthe
+
+	Ethernet: added/used EtherEncap::addPaddingAndFcs()
+
+2017-01-30  Zoltan Bojthe
+
+	MACRelayUnit: added FIXME : should handle multicast mac addresses
+	correctly
+
+2017-01-23  Levente Mészáros
+
+	All: Updated all affected protocols to use the new bit or byte units.
+
+2017-01-16  Zoltan Bojthe
+
+	~ethernet
+
+2017-01-25  Zoltan Bojthe
+
+	ethernet
+
+2016-12-09  Zoltan Bojthe
+
+	eth: added more ethertype values
+
+2017-01-25  Zoltan Bojthe
+
+	eth: phy layer frames moved to EtherPhyFrame.msg
+
+2016-12-08  Zoltan Bojthe
+
+	ethernet: fixed EtherPauseFrame
+
+2016-10-26  Zoltan Bojthe
+
+	refactoring: removed compatibility macros required for OMNeT++ 4.x builds
+	+ warning fixes
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-06-27  Zoltan Bojthe
+
+	EtherEncap: InterfaceId optimization: get intarfaceId in initialize
+
+2015-07-01  Zoltan Bojthe
+
+	NED: Added @nic property to all network interfaces.
+
+2015-06-11  Levente Mészáros
+
+	Link: Added interfaceId to control info sent up from MACs.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

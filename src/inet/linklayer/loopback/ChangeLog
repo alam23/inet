@@ -1,3 +1,37 @@
+====== inet-4.x ======
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-10  Levente Mészáros
+
+	Link: Updated packet drop signals and statistics.
+
+2017-07-12  Levente Mészáros
+
+	All: Replaced remaining packet drop signals with the generic one.
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2015-07-01  Zoltan Bojthe
+
+	NED: Added @nic property to all network interfaces.
+
+2015-06-11  Levente Mészáros
+
+	Loopback: Renamed gates from netwIn/netwOut to upperLayerIn/upperLayerOut
+	be similar to other MACs.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

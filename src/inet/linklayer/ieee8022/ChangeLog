@@ -1,0 +1,48 @@
+====== inet-4.x ======
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up includes.
+
+2017-09-13  Levente Mészáros
+
+	Link: Cleaned up LLC.
+
+2017-09-13  Levente Mészáros
+
+	Link: Renamed protocol to ieee8022 and protocol group to
+	ieee8022protocol.
+
+2017-09-12  Zoltan Bojthe
+
+	eth: llc
+
+2017-09-12  Zoltan Bojthe
+
+	linklayer: using new ethernet header structures
+
+2017-09-12  Zoltan Bojthe
+
+	eth: renamed ethernet, llc and snap headers
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-05-09  Levente Mészáros
+
+	802.2: Renamed to Ieee8022*.

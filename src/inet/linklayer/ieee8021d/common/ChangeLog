@@ -1,3 +1,38 @@
+====== inet-4.x ======
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-07-10  Zoltan Bojthe
+
+	all: remove some const_cast<>
+
+2017-01-30  Zoltan Bojthe
+
+	ieee8021d
+
+2016-10-26  Zoltan Bojthe
+
+	refactoring: removed compatibility macros required for OMNeT++ 4.x builds
+	+ warning fixes
+
+2016-10-19  Zoltan Bojthe
+
+	STPBase: let getRootIndex() const
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

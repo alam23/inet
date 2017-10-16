@@ -1,0 +1,44 @@
+====== inet-4.x ======
+
+2017-09-28  TÖRÖK Attila
+
+	Remove the requirement for a TCPCommand ControlInfo from TCPSocket ctor.
+
+	I have no idea if this is a good change, review and merge accordingly.
+
+2017-09-14  Levente Mészáros
+
+	All: Removed obsolete TCP socket parameter dataTransferMode from all
+	implementations.
+
+	Updated applications and tests.
+
+2017-01-05  Zoltan Bojthe
+
+	tcpapp
+
+2016-08-01  Zoltan Bojthe
+
+	omnetpp5: add/use refreshDisplay()
+
+2016-07-21  Zoltan Bojthe
+
+	tcpsocket: getState() made const
+
+2015-06-11  Levente Mészáros
+
+	Transport: Added ITransportProtocolControlInfo.
+
+2016-06-03  Levente Mészáros
+
+	TCP: Added explicit accept mechanism to listening.
+
+2015-06-11  Levente Mészáros
+
+	Transport: Implemented IProtocolControlInfo and ISocketControlInfo
+	interfaces with TCP/UDP control infos.
+
+2015-06-11  Levente Mészáros
+
+	TCP: Renamed connId to socketId to be able to implement the
+	ISocketControlInfo interface.

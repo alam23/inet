@@ -1,0 +1,52 @@
+====== inet-4.x ======
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-06-09  Rudolf Hornig
+
+	mac: removed unused variable
+
+2017-05-11  Levente Mészáros
+
+	802.11: Renamed frame variables to header where applicable.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed MAC header arguments to *Header.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed some MAC headers and frames.
+
+	Ieee80211Frame -> Ieee80211MacHeader Ieee80211OneAddressFrame ->
+	Ieee80211OneAddressHeader Ieee80211TwoAddressFrame ->
+	Ieee80211TwoAddressHeader Ieee80211ACKFrame -> Ieee80211AckFrame
+	Ieee80211RTSFrame -> Ieee80211RtsFrame Ieee80211CTSFrame ->
+	Ieee80211CtsFrame
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed multiple header chunks.
+
+	Ieee80211DataFrame -> Ieee80211DataHeader Ieee80211DataOrMgmtFrame ->
+	Ieee80211DataOrMgmtHeader Ieee80211ManagementHeader ->
+	Ieee80211MgmtHeader Ieee80211ManagementFrame -> Ieee80211MgmtFrame
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed to Ieee80211ManagementHeader.
+
+2017-04-20  Levente Mészáros
+
+	802.11: Refactored to use the new Packet API.

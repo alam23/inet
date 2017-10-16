@@ -1,3 +1,256 @@
+====== inet-4.x ======
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up includes.
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-07-12  Levente Mészáros
+
+	All: Renamed NotifierConsts files to Simsignals.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Renamed frame variables to header where applicable.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Set BSSID to MAC address in AP too.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed MAC header arguments to *Header.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed some MAC headers and frames.
+
+	Ieee80211Frame -> Ieee80211MacHeader Ieee80211OneAddressFrame ->
+	Ieee80211OneAddressHeader Ieee80211TwoAddressFrame ->
+	Ieee80211TwoAddressHeader Ieee80211ACKFrame -> Ieee80211AckFrame
+	Ieee80211RTSFrame -> Ieee80211RtsFrame Ieee80211CTSFrame ->
+	Ieee80211CtsFrame
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MgmtFrame.msg.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Cleaned up some includes.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed multiple header chunks.
+
+	Ieee80211DataFrame -> Ieee80211DataHeader Ieee80211DataOrMgmtFrame ->
+	Ieee80211DataOrMgmtHeader Ieee80211ManagementHeader ->
+	Ieee80211MgmtHeader Ieee80211ManagementFrame -> Ieee80211MgmtFrame
+
+2017-05-09  Levente Mészáros
+
+	802.11: Fixed peeking the MAC header.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Added missing headers.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Dropped obsolete code already moved to Ieee80211Portal and
+	Ieee802Llc.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Cleaned up unused code.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Replaced peekDataAt with peekData calls.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Moved important shared state information from MGMT to MIB.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Removed encapDecap parameter.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Moved MAC address from MGMT to MIB.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Removed MAC header from interface between MAC and MGMT.
+
+2017-05-08  Levente Mészáros
+
+	802.11: Added Ieee802Llc and Ieee80211Mib modules to Ieee80211Nic module.
+
+2017-05-03  Levente Mészáros
+
+	802.11: Removed connectedToHL flag.
+
+2017-05-03  Levente Mészáros
+
+	802.11: Removed remaining MAC header encapsulation and data frame
+	handling from MGMT.
+
+2017-05-03  Levente Mészáros
+
+	802.11: Moved encapsulation into MAC from adhoc MGMT.
+
+2017-05-03  Levente Mészáros
+
+	802.11: Dropped upperLayer gates from management modules.
+
+2017-05-03  Levente Mészáros
+
+	Link: Renamed to Ieee802LlcHeader.
+
+2017-05-03  Levente Mészáros
+
+	802.11: Removed setToDS for management frames as the standard requires.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Moved the insertion of the MAC trailer from MGMT into MAC.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Dropped duplicate Ieee80211ActionFrameBody.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed authentication *FrameBody to *Frame.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed to Ieee80211ManagementFrame.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed to Ieee80211ManagementHeader.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Dropped obsolete authentication frame subtypes.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Moved management frame bodies into their own chunks.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Moved variable bodyLength values to modules from chunk
+	definitions, updated fingerprints.
+
+2017-04-28  Levente Mészáros
+
+	802.11: Moved chunkLength to C++ because it's not constant.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Fixed encapsulation/decapsulation.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Temporarily disabled correct length computation for fingerprint
+	tests.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Added Ieee80211MacTrailer to management frames.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Added a couple of kludges to pass fingerprint tests.
+
+2017-04-27  Levente Mészáros
+
+	802.11: Moved Ieee80211MacTrailer handling so that fingerprints are kept.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MacTrailer and Ieee80211MacTrailerSerializer.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Renamed to Ieee80211FcsTrailer.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Removed Ieee80211DataFrameWithSNAP and add separate
+	Ieee802SnapHeader.
+
+2017-04-25  Levente Mészáros
+
+	802.11: Added separate Ieee80211Fcs chunk and fixed body lengths.
+
+2017-04-20  Levente Mészáros
+
+	802.11: Refactored to use the new Packet API.
+
+2017-04-12  Levente Mészáros
+
+	802.11: Replace cPacket with Packet.
+
+2017-03-09  Levente Mészáros
+
+	802.11: Fixed ethernet header size.
+
+2017-03-07  Levente Mészáros
+
+	All: Renamed a bunch of variables around popHeader and peekHeader.
+
+2017-02-08  Zoltan Bojthe
+
+	ieee80211: fixup
+
+2017-02-08  Zoltan Bojthe
+
+	ieee80211: mgmt: removed ethernet kludge
+
+2017-01-31  Zoltan Bojthe
+
+	changes for enabled Ethernet feature, too - KLUDGE in
+	Ieee80211MgmtAPBase.cc
+
+2016-10-26  Zoltan Bojthe
+
+	refactoring: removed compatibility macros required for OMNeT++ 4.x builds
+	+ warning fixes
+
+2016-05-31  Levente Mészáros
+
+	802.11: Moved interface lookup to management base class and added
+	interface id to control infos.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

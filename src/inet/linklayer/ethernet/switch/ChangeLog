@@ -1,3 +1,40 @@
+====== inet-4.x ======
+
+2017-09-13  Levente Mészáros
+
+	Link: Added clearTags() and removePoppedChunks() calls when reusing
+	packets in relay units.
+
+2017-09-12  Zoltan Bojthe
+
+	linklayer: using new ethernet header structures
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-06-12  Zoltan Bojthe
+
+	eliminate cast after dup()
+
+2017-04-11  Levente Mészáros
+
+	All: Added type alias for std::shared_ptr called Ptr, this allows
+	replacing the default implementation.
+
+2017-01-30  Zoltan Bojthe
+
+	MACRelayUnit: added FIXME : should handle multicast mac addresses
+	correctly
+
+2017-01-25  Zoltan Bojthe
+
+	ethernet
+
+2017-01-25  Zoltan Bojthe
+
+	eth: phy layer frames moved to EtherPhyFrame.msg
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

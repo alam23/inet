@@ -1,3 +1,141 @@
+====== inet-4.x ======
+
+2017-10-11  Zoltan Bojthe
+
+	eth: moved ethertype constants to new EtherType.msg file, dropped some
+	unused ethernet  related structs
+
+2017-09-21  Zoltan Bojthe
+
+	All: Merged InterfaceEntry and corresponding NIC module.
+
+	  - InterfaceEntry->getName() replaced to
+	InterfaceEntry->getInterfaceName()
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up includes.
+
+2017-09-13  Levente Mészáros
+
+	eth: Merged remaining enums from EtherTypeTag.msg into EtherFrame.msg.
+
+2017-09-12  Zoltan Bojthe
+
+	eth: llc
+
+2017-09-12  Zoltan Bojthe
+
+	linklayer: using new ethernet header structures
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-08-02  Zoltan Bojthe
+
+	ipv6: camelcase: renamed IPv6*Header to Ipv6*Header
+
+2017-08-02  Zoltan Bojthe
+
+	ipv4: camelcase: IPv4Header --> Ipv4Header, ICMPHeader --> IcmpHeader
+
+2017-07-05  Zoltan Bojthe
+
+	networklayer: "int get/setTransportProtocol()" replaced to "int
+	get/setProtocolId()", added "const Protocol* get/setProtocol()" ; uses
+	these
+
+2017-06-14  Zoltan Bojthe
+
+	feature related fixes
+
+2017-05-10  Levente Mészáros
+
+	Radio: Renamed IRadioFrame to ISignal, and RadioFrame to Signal.
+
+2017-05-08  Levente Mészáros
+
+	802.11: Added Ieee802Llc and Ieee80211Mib modules to Ieee80211Nic module.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed ICMPv6Message to ICMPv6Header.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed IPv6Datagram to IPv6Header.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed ICMPMessage to ICMPHeader.
+
+2017-02-03  Levente Mészáros
+
+	Link: Changed example Qos classifier to work with IPv6 headers too.
+
+2017-03-07  Levente Mészáros
+
+	802.11Old: Fixed kludge to work with the new Packet class.
+
+2016-12-16  Levente Mészáros
+
+	tcp
+
+2016-12-09  Zoltan Bojthe
+
+	eth: added more ethertype values
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPHeader renamed to UdpHeader
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPPacket renamed to UdpHeader
+
+2017-01-25  Zoltan Bojthe
+
+	ipv4: renamed IPv4Datagram to IPv4Header
+
+2016-12-08  Zoltan Bojthe
+
+	ethernet: fixed EtherPauseFrame
+
+2017-01-25  Zoltan Bojthe
+
+	x
+
+2017-01-25  Zoltan Bojthe
+
+	TCPSegment renamed to TcpHeader
+
+2017-03-07  Levente Mészáros
+
+	classifiers: detects UDP in FlatPacket
+
+2016-10-03  Zoltan Bojthe
+
+	TMP - UDP uses FlatPacket - not completed
+
+2016-07-20  Zoltan Bojthe
+
+	omnetpp5: remove obsolete omnetpp 4.x code (#if OMNETPP_VERSION < 0x500)
+
+2015-07-01  Zoltan Bojthe
+
+	NED: Added @nic property to all network interfaces.
+
+2015-06-12  Levente Mészáros
+
+	Link: Added a separate IInterfaceControlInfo to specify interface id.
+
+2016-05-31  Levente Mészáros
+
+	Link: Implemented IPacketControlInfo, IProtocolControlInfo,
+	ISocketControlInfo with link layer control infos.
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

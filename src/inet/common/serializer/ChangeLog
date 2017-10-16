@@ -1,3 +1,512 @@
+====== inet-4.x ======
+
+2017-10-11  Zoltan Bojthe
+
+	eth: moved ethertype constants to new EtherType.msg file, dropped some
+	unused ethernet  related structs
+
+2017-09-27  Zoltan Bojthe
+
+	icmp, icmpv6: added crc mode
+
+	udp: checking crc on incoming icmp/icmpv6 packets PingApp: set crc
+
+2017-09-26  Zoltan Bojthe
+
+	common: Fix TCP/IP Checksum calculation with odd length
+
+2017-09-13  Levente Mészáros
+
+	Serializer: Correctly implemented EthernetPhyHeaderSerializer.
+
+2017-09-13  Levente Mészáros
+
+	All: Cleaned up includes.
+
+2017-09-13  Levente Mészáros
+
+	Link: Cleaned up LLC.
+
+2017-09-13  Levente Mészáros
+
+	Serializer: Fixed deserializing non-representable control frames.
+
+2017-09-12  Zoltan Bojthe
+
+	linklayer: using new ethernet header structures
+
+2017-09-12  Zoltan Bojthe
+
+	eth: llc: support for 4 bytes llc header
+
+2017-09-12  Levente Mészáros
+
+	All: Added alias for std::make_shared, std::dynamic_pointer_cast, etc. to
+	support replacing the implementation.
+
+	The reason to allow replacing the standard shared pointer is that it uses
+	synchronization primitives to achieve thread safety. Thread safety is not
+	required for INET simulations.
+
+2017-09-11  Levente Mészáros
+
+	All: Renamed byte -> B and bit -> b according to IEC & IEEE unit
+	conventions.
+
+2017-08-10  Zoltan Bojthe
+
+	icmpv6: fixed deserializer
+
+2017-08-02  Zoltan Bojthe
+
+	ipv6: ICMPv6* headers, messages renamed to Icmpv6
+
+2017-08-02  Zoltan Bojthe
+
+	ipv6: camelcase: renamed IPv6*Header to Ipv6*Header
+
+2017-08-02  Zoltan Bojthe
+
+	ipv4: camelcase: IPv4Header --> Ipv4Header, ICMPHeader --> IcmpHeader
+
+2017-07-31  Zoltan Bojthe
+
+	serializer: ICMPv6HeaderSerializer fixed: was 2 bytes extra read
+
+2017-07-27  Levente Mészáros
+
+	Serializer: Added TODO item to Ieee80211MacHeaderSerializer.
+
+2017-07-27  Levente Mészáros
+
+	802.11: Added Ieee80211MpduSubframeHeader and its serialization.
+
+2017-07-26  Levente Mészáros
+
+	Serializer: Dropped unused 802.11 PLCP header file.
+
+2017-07-26  Levente Mészáros
+
+	Serializer: Rewritten 802.11 OFDM phy header serialization to avoid using
+	a structure.
+
+	According to the C++ standard, the memory layout of bit fields in
+	structures is undefined.
+
+2017-07-11  Levente Mészáros
+
+	All: Renamed variables, arguments, and functions to adapt to Chunk API.
+
+2017-07-05  Zoltan Bojthe
+
+	networklayer: "int get/setTransportProtocol()" replaced to "int
+	get/setProtocolId()", added "const Protocol* get/setProtocol()" ; uses
+	these
+
+2017-07-04  Levente Mészáros
+
+	All: Added more const qualifiers to Ptr<> where possible.
+
+2017-07-05  Levente Mészáros
+
+	All: Followed recent const addition to Ptr<Chunk> in the Packet API.
+
+2017-06-13  Zoltan Bojthe
+
+	feature related fixes
+
+2017-06-12  TÖRÖK Attila
+
+	Typedef BSD-style integer types on all platforms.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Revived layered OFDM transmitter and receiver.
+
+2017-05-11  Levente Mészáros
+
+	802.11: Dropped obsolete layered code.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Replaced unused qos field with parts of QoS control field.
+
+2017-05-10  Levente Mészáros
+
+	802.11: Renamed some MAC headers and frames.
+
+	Ieee80211Frame -> Ieee80211MacHeader Ieee80211OneAddressFrame ->
+	Ieee80211OneAddressHeader Ieee80211TwoAddressFrame ->
+	Ieee80211TwoAddressHeader Ieee80211ACKFrame -> Ieee80211AckFrame
+	Ieee80211RTSFrame -> Ieee80211RtsFrame Ieee80211CTSFrame ->
+	Ieee80211CtsFrame
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MsduSubframeHeader.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MgmtFrame.msg.
+
+2017-05-09  Levente Mészáros
+
+	802.2: Renamed to Ieee8022*.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Cleaned up some includes.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Renamed multiple header chunks.
+
+	Ieee80211DataFrame -> Ieee80211DataHeader Ieee80211DataOrMgmtFrame ->
+	Ieee80211DataOrMgmtHeader Ieee80211ManagementHeader ->
+	Ieee80211MgmtHeader Ieee80211ManagementFrame -> Ieee80211MgmtFrame
+
+2017-05-09  Levente Mészáros
+
+	Serializer: Extracted Ieee80211MgmtFrameSerializer from
+	Ieee80211MacHeaderSerializer.
+
+2017-05-09  Levente Mészáros
+
+	802.11: Added fcsMode parameter.
+
+2017-05-03  Levente Mészáros
+
+	Serializer: Renamed to Ieee802LlcHeaderSerializer.
+
+2017-05-03  Levente Mészáros
+
+	Link: Renamed to Ieee802LlcHeader.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed authentication *FrameBody to *Frame.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Renamed to Ieee80211ManagementHeader.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Dropped obsolete authentication frame subtypes.
+
+2017-05-02  Levente Mészáros
+
+	802.11: Moved management frame bodies into their own chunks.
+
+2017-04-28  Zoltan Bojthe
+
+	tcp: remove kludges
+
+2017-04-27  Levente Mészáros
+
+	Serialization: Added missing chunk types to Ieee80211MacHeaderSerializer.
+
+2017-04-27  Levente Mészáros
+
+	Serializer: Fixed Ieee80211MacHeader deserialization wrt. sequence
+	control and QoS control.
+
+2017-04-27  Levente Mészáros
+
+	Serializer: Temporarily revived Ieee80211PhyHeaderSerializer with a
+	kludge.
+
+2017-04-26  Levente Mészáros
+
+	Serializer: Revived Ieee80211MacHeader::deserialize().
+
+2017-04-26  Levente Mészáros
+
+	802.11: Renamed to Ieee80211MacTrailer and Ieee80211MacTrailerSerializer.
+
+2017-04-26  Levente Mészáros
+
+	Serializer: Implemented Ieee80211FcsTrailerSerializer.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Renamed to Ieee80211FcsTrailer.
+
+2017-04-26  Levente Mészáros
+
+	802.11: Added TID to QoS control field in serializer.
+
+2017-04-26  Levente Mészáros
+
+	802: Added separate IEEE 802 LLC and SNAP headers and serializers.
+
+2017-04-25  Levente Mészáros
+
+	Common: Renamed functions to include Be (Big Endian) in their names.
+
+2017-04-25  Levente Mészáros
+
+	Serializer: Partially revived Ieee80211MacHeaderSerializer.
+
+2017-04-25  Levente Mészáros
+
+	Serializer: Fixed ICMP serializer.
+
+2017-04-12  Zoltan Bojthe
+
+	ipv4 serializer/deserializer
+
+2017-04-12  Levente Mészáros
+
+	Serializer: Removed discouraged setChunkLength calls from deserializers.
+
+	FieldsChunkSerializer base class calls setChunkLength() anyway.
+
+2017-04-11  Levente Mészáros
+
+	All: Added type alias for std::shared_ptr called Ptr, this allows
+	replacing the default implementation.
+
+2017-04-11  Levente Mészáros
+
+	Common: Completed MemoryInputStream implementation for bit streaming.
+
+2017-04-11  Levente Mészáros
+
+	Common: Completed MemoryOutputStream implementation for bit streaming.
+
+2017-04-11  Levente Mészáros
+
+	Common: Renamed to MemoryInputStream and MemoryOutputStream.
+
+2017-04-05  Zoltan Bojthe
+
+	ping-icmp-icmpv6-EchoProtocol: drop PingPayload, icmp headers contain the
+	identifier and sequence number
+
+2017-03-24  Zoltan Bojthe
+
+	ppp: PppTrailerSerializer: KLUDGE
+
+2017-03-24  Zoltan Bojthe
+
+	TCPIPchecksum: removed the special pseudoheader-related checksum()
+	function
+
+2017-03-20  Zoltan Bojthe
+
+	applications: serializers
+
+2017-03-29  Zoltan Bojthe
+
+	icmpv6: optimized, fixed memory leaks, fixes
+
+2017-03-09  Zoltan Bojthe
+
+	TcpHeaderSerializer: kludge for fingerprint tests
+
+2017-03-17  Levente Mészáros
+
+	Common: Moved byte serialization loops into streams.
+
+2017-03-16  Levente Mészáros
+
+	UDO: Properly implemented CRC handling.
+
+2017-03-02  Levente Mészáros
+
+	Common: Renamed to ChunkSerializerRegistry.
+
+2017-03-02  Levente Mészáros
+
+	Common: Split Serializer.cc and Serializer.h according to classes.
+
+2017-03-02  Levente Mészáros
+
+	Common: Moved ChunkSerializer under common/packet/serializer.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Removed unused code.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Ported somewhat but temporarily disabled 802.11 serializer
+	until the new 802.11 model is merged in.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Ported IGMPHeaderSerializer to new API.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Ported ICMPv6HeaderSerializer to new API.
+
+2017-03-01  Levente Mészáros
+
+	Serializer: Ported IPv6HeaderSerializer to new API.
+
+2017-02-22  Levente Mészáros
+
+	Serializer: Extracted PingPayloadSerializer.
+
+2017-02-22  Levente Mészáros
+
+	Serializer: Ported serialization of TCP options.
+
+2017-02-22  Levente Mészáros
+
+	Serializer: Ported serialization of IPv4 options.
+
+2017-02-22  Levente Mészáros
+
+	Serializer: Added missing overrides and moved functions to protected
+	secion.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Moved headerserializers one level up.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Changed to use a reference.
+
+2017-02-21  Levente Mészáros
+
+	Serialier: Dropped obsolete serializers.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Ported TcpHeaderSerializer partially.
+
+2017-02-21  Zoltan Bojthe
+
+	common: removed obsolete RawPacket
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Cosmetics in UdpHeaderSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Completed the port of Ethernet*Serializers.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Ported IPv4HeaderSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Added ICMPHeaderSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Added PppHeaderSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Cosmetics in ARPPacketSerializer.
+
+2017-02-21  Levente Mészáros
+
+	Serializer: Added ApplicationPacketSerializer.
+
+2017-02-16  Levente Mészáros
+
+	Serializer: Ported EthernetHeaderSerializer to the new API.
+
+2017-02-16  Levente Mészáros
+
+	Serializer: Ported ARPPacketSerializer to new API.
+
+2017-02-16  Levente Mészáros
+
+	Serializer: Ported UdpHeaderSerializer to new API.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed ICMPv6Message to ICMPv6Header.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed IPv6Datagram to IPv6Header.
+
+2017-02-16  Levente Mészáros
+
+	All: Renamed ICMPMessage to ICMPHeader.
+
+2017-02-03  Levente Mészáros
+
+	Serializer: Disabled compiling IPv6 related serializers.
+
+2017-03-07  Levente Mészáros
+
+	igmp
+
+2017-01-25  Zoltan Bojthe
+
+	ethernet
+
+2017-01-11  Zoltan Bojthe
+
+	ipv4: ARP
+
+2016-12-16  Levente Mészáros
+
+	tcp
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPHeader renamed to UdpHeader
+
+2016-12-08  Zoltan Bojthe
+
+	udp: UDPPacket renamed to UdpHeader
+
+2017-01-25  Zoltan Bojthe
+
+	ipv4: renamed IPv4Datagram to IPv4Header
+
+2017-01-25  Zoltan Bojthe
+
+	eth: phy layer frames moved to EtherPhyFrame.msg
+
+2017-01-25  Zoltan Bojthe
+
+	x
+
+2016-10-28  Zoltan Bojthe
+
+	udp - IN WORK
+
+2016-10-26  Zoltan Bojthe
+
+	old Chunk renamed to FlatChunk
+
+2017-01-25  Zoltan Bojthe
+
+	TCPSegment renamed to TcpHeader
+
+2016-10-17  Zoltan Bojthe
+
+	tcpserializer fix
+
+2016-10-14  Zoltan Bojthe
+
+	tcp fixes
+
+2016-10-14  Zoltan Bojthe
+
+	FlatPacket: TCP uses it (lwIP, NSC is incomplete)
+
+2016-10-05  Zoltan Bojthe
+
+	udp with flatpacket
+
+2016-10-03  Zoltan Bojthe
+
+	TMP - UDP uses FlatPacket - not completed
+
 ====== inet-3.x ======
 
 2017-10-02  ------ inet-3.6.2 released ------

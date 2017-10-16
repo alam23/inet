@@ -1,0 +1,9 @@
+====== inet-4.x ======
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Implemented required interfaces with SCTPCommand.
+
+2016-06-14  Levente Mészáros
+
+	SCTP: Renamed assocId to socketId in SCTPCommand.
