@@ -1,0 +1,55 @@
+#!/bin/sh
+DIR=`dirname $0`
+
+TOOL=""
+MODE=""
+
+if [ "$1" = "--release" ] ; then
+   MODE="release"
+   shift;
+fi
+
+if [ "$1" = "--debug" ] ; then
+   MODE="debug"
+   shift;
+fi
+
+if [ "$1" = "--printcmd" -o "$1" = "-p"] ; then
+   TOOL="echo"
+   shift;
+fi
+
+if [ "$MODE" = "" ] ; then
+  if [ -f $DIR/INET ]; then
+    $TOOL $DIR/INET $INET_OMNETPP_OPTIONS
+  elif [ -f $DIR/INET_dbg ]; then
+    $TOOL $DIR/INET_dbg $INET_OMNETPP_OPTIONS
+  elif [ -f $DIR/INET.exe ]; then
+    $TOOL $DIR/INET.exe $INET_OMNETPP_OPTIONS
+  elif [ -f $DIR/INET_dbg.exe ]; then
+    $TOOL $DIR/INET_dbg.exe $INET_OMNETPP_OPTIONS
+  else
+    $TOOL opp_run -l $DIR/../src/INET $INET_OMNETPP_OPTIONS $@
+  fi
+fi
+
+if [ "$MODE" = "release" ] ; then
+  if [ -f $DIR/INET ]; then
+    $TOOL $DIR/INET $INET_OMNETPP_OPTIONS
+  elif [ -f $DIR/INET.exe ]; then
+    $TOOL $DIR/INET.exe $INET_OMNETPP_OPTIONS
+  else
+    $TOOL opp_run_release -l $DIR/../src/INET $INET_OMNETPP_OPTIONS $@
+  fi
+fi
+
+if [ "$MODE" = "debug" ] ; then
+  if [ -f $DIR/INET_dbg ]; then
+    $TOOL $DIR/INET_dbg $INET_OMNETPP_OPTIONS
+  elif [ -f $DIR/INET_dbg.exe ]; then
+    $TOOL $DIR/INET_dbg.exe $INET_OMNETPP_OPTIONS
+  else
+    $TOOL opp_run_dbg -l $DIR/../src/INET $INET_OMNETPP_OPTIONS $@
+  fi
+fi
+
